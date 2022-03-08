@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Task Management System</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="style/tasks.css?10">
+        <script src="https://kit.fontawesome.com/8dadc96e20.js" crossorigin="anonymous"></script>
+        <script id="task-template" type="text/html">
+        <table class="tasks" style="margin-top:10px;margin-left:20px;">          
+            <tr><th></th><th id="task_sort_heading" onclick="sort(this);" class="sort_heading" data-sort-by="task" data-sort-type="default"><span class="sort_icon_span" id="task_sort_icon"><i class="fa fa-sort" aria-hidden="true"></i></span> Task</th><th id="date_sort_heading" onclick="sort(this);" class="sort_heading" data-sort-by="date" data-sort-type="default"><span class="sort_icon_span" id="date_sort_icon"><i class="fa fa-sort" aria-hidden="true"></i></span> Due Date </th><th  id="priority_sort_heading" onclick="sort(this);" class="sort_heading" data-sort-by="priority" data-sort-type="default"><span class="sort_icon_span" id="priority_sort_icon"><i class="fa fa-sort" aria-hidden="true"></i></span> Priority</th><th></th></tr>
+            {{#block tasks}}
+            <tr class="task">
+                <td class="status">
+                    <input onclick="complete_task(this)"  name="task-checkbox" data-task-id="{{id}}" type="checkbox" {{checked}}>
+                </td>
+                <td class="name">
+                    <input size="45" id="name_{{id}}" onclick="make_editable(this)" onblur="edit_task(this)" data-task-id="{{id}}" class="{{checked}}" value="{{name}}"> 
+                </td>
+                <td class="date">
+                    <input id="date_{{id}}" onclick="make_editable(this)" onblur="edit_task(this)" data-task-id="{{id}}" class="{{checked}}" value="{{date}}"> 
+                </td>
+                <td>
+                    <span data-task-id="{{id}}" onclick="make_priority_editable(this)" type="text" class="priority {{priority}}"> {{priority}}</span>
+                <select data-task-id="{{id}}" onchange="edit_task(this);" style="display:none;" id="priority_{{id}}">
+                    <option {{high_selected}} value="H">High</option>
+                    <option {{medium_selected}} value="M">Medium</option>
+                    <option {{low_selected}} value="L">Low</option>
+                </select>
+                </td>
+                <td class="actions">
+                    <i onclick="delete_task(this)" data-task-id="{{id}}" class="fa fa-close"></i>
+                </td>
+            </tr>
+            {{#end block tasks}}
+        </table>
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript"  src='script/general.js?2'></script>
+    <script type="text/javascript"  src='script/tasks.js?81'></script>
+
+
+</head>
+<body>
+ 
+   
+    <table class="tasks" style="margin-left:40px;width:850px;">
+                    <tr id="add_new_task"><td colspan="5"><button onclick="add_new_task_row();" class="add_new_task">+ Add New Task</button></td>
+                <tr style="display:none;" id="add_new_task_details" class="task new">
+                <td class="status">
+                </td>
+                <td class="name">
+                    <input placeholder="New Task Name" id="new_name"  value=""> 
+                </td>               
+                <td style="width:150px;"><input type="date" style="width:90%;" id="new_due_date">
+                </td>
+                <td>
+                    <select id="priority">
+                    <option value="H">High</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Low</option>
+                </select>
+                </td>
+                <td class="actions">
+                    <button class="add_new_task" onclick="add_task();"  id="add_button">Add</button>
+                </td>                 
+            </tr>                 
+            <tr>
+                <td colspan="5"> 
+            <table>
+                <tr class="labels">
+                <td>
+                    Task Name
+                </td>
+                <td>
+                    Status
+                </td>
+                <td>
+                    Month
+                </td>
+                <td>
+                    Year
+                </td>
+                <td>
+                    Priority
+                </td>
+                </tr>
+                <tr class="filters">
+                    <td>
+                        <input style="width:300px;" onkeyup="task_search();" id="task_name_search" type="text">
+                    </td>
+                    <td>
+                        <select onchange="task_search();" id="task_status_search">
+                            <option value="any">Any</option>
+                            <option value="false" selected>Uncompleted</option>
+                            <option value="true">Completed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select onchange="task_search();" id="task_month_search">
+                            <option value="any">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select onchange="task_search();" id="task_year_search">
+                            <option value="any">Any</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+							<option value="2021">2021</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select onchange="task_search();" id="task_priority_search">
+                            <option value="any">Any</option>
+                            <option value="H">High</option>
+                            <option value="M">Medium</option>
+                            <option value="L">Low</option>
+                        </select>
+                    </td>
+                    
+                </tr>
+            </table>
+                </td>
+            </tr>  
+    </table>
+    <div id="tasks" style="margin-left:15px;">
+
+    </div>
+    <div id="calendar_basic" style="margin-top: 20px; margin-left:10px;height: 350px;">
+        
+    </div>
+</body>
+</html>

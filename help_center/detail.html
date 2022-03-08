@@ -1,0 +1,364 @@
+
+<html>
+    <head>
+        <title>Organic Budget Help Center</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        
+                
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script type='text/javascript' src='../script/help_center_app.js?1'></script> 
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "help_desk_details"},
+                success: function (data) {
+                }
+            });
+        </script>           
+         
+        <script>
+            $(document).ready(function(){
+              HELP_CENTER.show_section_questions();  
+            });
+        </script>
+        <script id="help-center-question-template" type="text/html">
+        <div id="help_center_question_{{id}}" data-help-center-question="{{title}}" class="help_center_question" data-expanded="0">
+            <img id="help_center_image_{{id}}" class="arrow"  src="../images/double_down_arrow.png">
+            {{title}}
+            <div class="help_center_detail" id="help_center_detail_{{id}}" ></div>
+        </div>
+        </script> 
+        <script id="income-savings-insights-template" type="text/html">
+            <p><span class="bulletpoint"></span> Use income vs spending insights filters to look at different periods of times and accounts, and to sort the results. </p>
+            <p><span class="bulletpoint"></span> The chart helps you compare monthly income and savings. </p>
+            <img class="very_large_image" src="../images/help/income_savings_insights.jpg">
+            <p><span class="bulletpoint"></span> You can click on a saving/income bar to obtain more details. </p>
+            <img class="very_large_image" src="../images/help/income_savings_callout_insights.jpg">
+        </script>         
+        <script id="total-savings-insights-template" type="text/html">
+            <p><span class="bulletpoint"></span> Use total savings insights filters to look at different periods of times and accounts. </p>
+            <p><span class="bulletpoint"></span> The chart helps you look at the monthly savings. </p>
+            <img class="very_large_image" src="../images/help/total_savings.jpg">
+            <p><span class="bulletpoint"></span> You can click on a saving bar to obtain more details. </p>
+            <img class="very_large_image" src="../images/help/total_savings_callout.jpg">
+        </script>        
+        <script id="budget-insights-template" type="text/html">
+            <p><span class="bulletpoint"></span> Use budget tracking insights filters to look at different periods of times, accounts, and scales.</p>
+            <p><span class="bulletpoint"></span> The chart helps you look track your budget visually in a specific month. </p>
+            <img class="very_large_image" src="../images/help/budget_insights.jpg">
+            <p><span class="bulletpoint"></span> You can click on a budget bar to obtain more details. </p>
+            <img class="very_large_image" src="../images/help/budget_insights_callout.jpg">
+        </script>        
+        <script id="total-spending-insights-template" type="text/html">
+            <p><span class="bulletpoint"></span> Use total spending insights filters to look at different periods of times, accounts, and categories. The flame icon means you spent the most in that month.</p>
+            <p><span class="bulletpoint"></span> The chart helps you look at your spending visually across a period of time. </p>
+            <img class="very_large_image" src="../images/help/total_spending.jpg">
+            <p><span class="bulletpoint"></span> You can click on a spending bar to obtain more details. </p>
+            <img class="very_large_image" src="../images/help/total_spending_callout.jpg">
+        </script>        
+        <script id="spending-insights-template" type="text/html">
+            <p><span class="bulletpoint"></span> Use spending insights filters to look at different periods of times, accounts, and to see your spending by category, payee, or item name.</p>
+            <p><span class="bulletpoint"></span> The chart helps you look at your spending visually. You can compare it with previous month's spending as well as the average spending. Some categories have a warning icon next to them which means you spent more than the previous month and the average. Others have a green leaf next to them which means you spent less than the previous month and the average. </p>
+            <img class="very_large_image" src="../images/help/spending_insights.jpg">
+            <p><span class="bulletpoint"></span> You can click on a spending bar to obtain more details. </p>
+            <img class="very_large_image" src="../images/help/spending_insights_callout.jpg">
+        </script>        
+        <script id="edit-transaction-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a transaction, click on the transaction settings icon (three dots) and click on Edit or Delete Transaction.</p>
+                <img class="very_large_image" src="../images/help/edit_transaction.jpg">
+            
+        </script>
+        <script id="edit-transaction-item-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a transaction item, click on the transaction item settings icon (three dots) and click on Edit or Delete.</p>
+                <img class="very_large_image" src="../images/help/edit_transaction_item.jpg">
+            
+        </script>
+        <script id="edit-income-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete an income transaction, click on the income transaction settings icon (three dots) and click on Edit or Delete.</p>
+                <img class="very_large_image" src="../images/help/edit_income_window.jpg">
+            
+        </script>
+         <script id="edit-transfer-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a transfer transaction, click on the transfer settings icon (three dots) and click on Edit or Delete.</p>
+                <img class="very_large_image" src="../images/help/edit_transfer.jpg">
+            
+        </script> 
+         <script id="edit-category-item-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a category item, click on the category item settings icon (three dots) and click on Edit or Delete. Further, you can change the item category by clicking on Change Category</p>
+                <img class="very_large_image" src="../images/help/edit_category_item.jpg">
+            
+        </script>          
+         <script id="edit-budget-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a budget, click on the budget settings icon (three dots) and click on Edit Budget or Delete Budget.</p>
+                <img class="very_large_image" src="../images/help/edit_budget_window.jpg">
+            
+        </script> 
+         <script id="edit-category-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a category, click on the category settings icon (three dots) and click on Edit Category or Delete Category.</p>
+                <img class="very_large_image" src="../images/help/edit_category.jpg">
+            
+        </script>   
+         <script id="edit-account-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete an account, click on the account settings icon (three dots) and click on Edit or Delete.</p>
+                <img class="very_large_image" src="../images/help/edit_account_window.jpg">
+            
+        </script>           
+         <script id="edit-target-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To edit or delete a target, click on the target settings icon (three dots) and click on Edit or Delete.</p>
+                <img class="very_large_image" src="../images/help/edit_target_window.jpg">
+            
+        </script>     
+         <script id="edit-settings-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> Settings allow you to change and configure important variables in your application. To edit the settings, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to change or configure the main variables in your application.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/settings_window.jpg">
+        </script> 
+         <script id="change-password-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To change your password, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to change the password. Click on <i>Change Password</i> to change the password.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/change_password_window.jpg">
+        </script>
+         <script id="change-currency-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To change your default currency, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to change the default currency. Click on the <i>Default Currency combo box</i> to change the default currency.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/change_currency_window.jpg">
+        </script>
+         <script id="change-currency-format-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To change your currency format, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to change the currency format. Click on the <i>Currency Format combo box</i> to change the currency format.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/change_currency_format_window.jpg">
+        </script>  
+         <script id="change-date-format-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To change your date format, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to change the date format. Click on the <i>Date Format combo box</i> to change the date format.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/change_date_window.jpg">
+        </script>  
+         <script id="delete-account-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> To delete your account, click on the settings icon
+                <img class="tiny_image" src="../images/help/settings_button.jpg">
+            </p>
+            <p>
+                <span class="bulletpoint"></span> When you click on the settings option, the settings window shows up, and it allows you to delete the account. Click on the <i>Delete Account</i> to delete the account.
+            </p> 
+            <img class="large_image centered_image" src="../images/help/delete_account_window.jpg">
+        </script>        
+        <script id="add-budget-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_budget_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the <i>Budgets</i> tab (page). Click on the <i>Add Budget </i> button to add a budget.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Budget button, this screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_budget_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Budget Information: </b> The budget information can be defined as follows: 
+            <ul>
+                <li><b>Name: </b> A unique name for identifying the budget.</li>
+                <li><b>Start: </b> The month in which the budget becomes active. The current month is selected by default</li>
+                <li><b>End: </b> The month in which the budget becomes inactive. The current month is selected by default</li>
+                <li><b>Targets: </b>  The budget targets (how much you want to spend on different categories):
+                    <ul>
+                        <li><b>Category:</b> The category you want to spend on.</li>
+                        <li><b>Amount:</b> The amount you want to spend on the selected category.</li>
+                        <li><b>Frequency:</b> How often you spend on this category. This can be defined on a monthly or yearly basis.</li>
+                        <li><b>Rollover:</b> If this option is checked, if you don't spend all your budget this cycle, the leftover will be transfered to the next cycle. Further, if you overspend this cycle, the overspending will be deducted from the next cycle.</li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </script>        
+        <script id="add-spending-transaction-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_transaction_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the transactions tab (page). Click on the <i>Add transaction </i> button to add a transaction.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Transaction button, this screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_transaction_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Transaction Information: </b> The transaction information can be defined as follows: 
+            <ul>
+                <li><b>Payee: </b> The merchant or person to whom money is paid.</li>
+                <li><b>Date: </b> The transaction date. The current date is specified by default</li>
+                <li><b>Time: </b> The transaction time. The current time is specified by default</li>
+                <li><b>Account: </b> The account from which the money is withdrawn.</li>
+                <li><b>Items: </b>  The items your purchased. In the picture you see three examples:
+                    <ol>
+                        <li>You spent $40 on the category of Groceries</li>
+                        <li>You spent $16 on 2 batteries (2 x $8). The batteries belong to the Electronics category.</li>     
+                        <li>You spent $40 on oil change (since the category is not specified, the system will put oil change in the Miscellaneous category).</li>
+                    </ol>
+                </li>
+            </ul>
+            </p>
+        </script>
+        <script id="add-account-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_account_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the accounts tab (page). Click on the <i>Add Account </i> button to add an account.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Account button. This screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_account_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Account Information: </b> The account information can be defined as follows: 
+            <ul>
+                <li><b>Name: </b> The unique name used to identify the account.</li>
+                <li><b>Description: </b> A piece of text to describe the account.</li>
+                <li><b>Type: </b> There are two types (a bank account and a cash account). A bank account is an account maintained by a bank for you whereas a cash account is money in the physical form of currency, such as banknotes and coins.</li>
+                <li><b>Money Type: </b> There are two types (debit and credit). Debit Account: An account maintained by a bank for you. A payment or withdrawal causes a decrease in the amount of money the bank owes to you. A deposit causes an increase in the money the bank owes to you.
+ <br>Credit Account: An account that you can borrow money from. A payment or withdrawal causes an increase in the amount of money you own to the bank. A deposit causes a decrease in the money you owe to the bank.</li>
+               
+                <li><b>Initial Balance: </b> The initial amount of money you have in the account or as cash. For a debit account or cash, if the balance is positive, that's money you have whereas a negative amount is money you owe. For a credit account, a positive amount is money you owe whereas a negative amount is money the bank owes to you </li>
+                 <li><b>Currency Type: </b> The currency of the bank account.</li>
+            </ul>
+            </p>
+        </script>         
+        <script id="add-category-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_category_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the categories tab (page). Click on the <i>Add Category </i> button to add a category.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Category button. This screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_category_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Category Information: </b> The category information can be defined as follows: 
+            <ul>
+                <li><b>Name: </b> The unique name used to identify the category.</li>
+                <li><b>Description: </b> A piece of text to describe the category.</li>
+                <li><b>Type: </b> The type of the category. A spending category is used to classify categories you spend on whereas an income category is used to classify sources of income.</li>
+                <li><b>Color: </b> The color of the category. The white color is the default.</li>
+            </ul>
+            </p>
+        </script>          
+        <script id="add-transfer-transaction-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_transaction_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the transactions tab (page). Click on the <i>Add transaction </i> button to add a transaction.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Transaction button, make sure you are on the <i>transfer tab</i>. This screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_transfer_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Transfer Information: </b> The transfer information can be defined as follows: 
+            <ul>
+                <li><b>From Account: </b> The account you are transferring the money from.</li>
+                <li><b>To Account: </b> The account you are transferring the money to.</li>
+                <li><b>Amount: </b> The transaction amount.</li>
+                <li><b>Date: </b> The transaction date. The current date is specified by default</li>
+                <li><b>Time: </b> The transaction time. The current time is specified by default</li>
+            </ul>
+            </p>
+        </script>        
+        <script id="add-income-transaction-detail-template" type="text/html">
+            <p>
+                <img class='medium_image' src='../images/help/add_transaction_button.jpg'> 
+                <span class='bulletpoint'></span>
+                Make sure you are on the transactions tab (page). Click on the <i>Add transaction </i> button to add a transaction.
+            </p>
+            <p>
+                <span class='bulletpoint'></span>When you click on the Add Transaction button, make sure you are on the <i>income tab</i>. This screen shows up and asks you to fill out some information. <img class='large_image' src='../images/help/add_income_window.jpg'> 
+                <br><span class='bulletpoint'></span><b>Income Information: </b> The income information can be defined as follows: 
+            <ul>
+                <li><b>Account: </b> The account in which the income is deposited.</li>
+                <li><b>Source: </b> The income source (this comes from the income categories)</li>
+                <li><b>Amount: </b> The transaction amount.</li>
+                <li><b>Date: </b> The transaction date. The current date is specified by default</li>
+                <li><b>Time: </b> The transaction time. The current time is specified by default</li>
+            </ul>
+            </p>
+        </script> 
+        <script id="add-category-item-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> Find the existing category you want to add an item to. Click on the category settings (three dots icon). Click on Add Item 
+            </p>
+            <img class='very_large_image' src="../images/help/add_category_item.jpg">
+        </script>         
+        <script id="add-transaction-item-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> There are two ways to add a transaction item.
+            <ol>
+                <li> Find the existing transaction you want to add an item to. Click on the transaction settings (three dots icon). Click on Add Item <img class='very_large_image' src="../images/help/add_transaction_item_window_1.jpg"></li>
+                <li>  When you are editing a transaction, you can add a new item by clicking on Add Item <img class='large_image centered_image' src="../images/help/add_transaction_item_window_2.jpg"></li>
+
+            </ol>
+            </p>
+        </script>  
+        <script id="add-budget-target-detail-template" type="text/html">
+            <p>
+                <span class="bulletpoint"></span> There are two ways to add a budget target.
+            <ol>
+                <li> Find the existing budget you want to add a target to. Click on the transaction settings (three dots icon). Click on Add Item <img class='very_large_image' src="../images/help/add_target_window_1.jpg"></li>
+                <li>  When you are editing a budget, you can add a new target by clicking on Add New Target <img class='large_image centered_image' src="../images/help/add_target_window_2.jpg"></li>
+
+            </ol>
+            </p>
+        </script>         
+</head>
+<body>
+    <div class="heading">
+        <div class='logo' onclick="window.location.assign('..');">
+            <b>Organic</b> <span style='color:black;'> Budget</span>
+        </div>
+    </div>
+    <div class="bread_crumb"><a href="../help_center">Help Center</a> > <span id="section_topic"></span></div>
+    <div class="question_topic_title_container">
+        <img id="question_topic_title_image" src="">
+        <div class="question_topic_title" id="question_topic_title"></div>
+        <div class="question_topic_description" id="question_topic_description"></div>
+    </div>
+
+    <div class="help_center_question_container" id="help_center_question_container">
+        
+    </div>
+    <div class="help_center_question_container">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- help_center_detail_ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9651537267508961"
+             data-ad-slot="2385272732"
+             data-ad-format="auto"></ins>
+        <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>    
+</body> 
+</html>

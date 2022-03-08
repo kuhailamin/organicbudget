@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://gist.github.com/kuhailm/d516a2d136fb2d37c9df694ae838b492.js"></script>
+        <script src="https://gist.github.com/kuhailm/ba5a6b77b06e7940dfeac7e35b07b59e.js"></script>        
+        <script>
+            $(document).ready(function () {
+                $(".gist").css("width", "50%");
+                init_file();
+    var ifr=document.getElementById('animation_frame');
+    ifr.onload=function(){
+        alert("frame loaded");
+        this.style.display='block';
+        alert("frame loaded");
+       var html=$("#content").html();
+        $("#frame").html(html);
+        //$("#frame").show();        
+        
+    };                
+            });
+
+            function init_file() {
+                var combos = $(".tab").children(".combobox").map(function (i, e) {
+                    return e;
+                }).get();
+
+                for (var i = 0; i < combos.length; ++i) {
+                    put_files_in_div(combos[i]);
+                    var vals=hide_combo_files(combos[i]);
+                    show_file(vals[0]);
+                }
+                
+                var animations = $(".animation").map(function (i, e) {
+                    return e;
+                }).get();
+
+                for (var i = 0; i < animations.length; ++i) {
+                    define_animation(animations[i]);
+                }                
+                
+
+                $('.combobox').change(function () {
+                    var selectedText = this.options[this.selectedIndex].text;
+                    hide_combo_files(this);
+                    show_file(selectedText);
+
+                });
+
+            }
+            function put_files_in_div(combo) {
+                var values = $(combo).children('option').map(function (i, e) {
+                    return e.value || e.innerText;
+                }).get();
+                for (var i = 0; i < values.length; ++i) {
+                    var elem=$("a:contains('" + values[i] + "')").parent().parent().parent();
+                    var html=elem[0].outerHTML;
+                    var file_name=values[i];
+                    file_name=file_name.replace(".","\\.");
+                    $("#"+file_name).html(html);
+                    elem.remove();
+                    var em=$("a:contains('"+values[i]+"')").parent().html();
+                    var index=em.search("with");
+                    var string_1=em.slice(0,index);
+                    var string_2=em.slice(index+7,em.length);
+                    var str=string_1+string_2;
+                    $("a:contains('"+values[i]+"')").parent().html(str);
+                 }                    
+                }
+                        
+
+            function hide_combo_files(combo) {
+                var values = $(combo).children('option').map(function (i, e) {
+                    return e.value || e.innerText;
+                }).get();
+                for (var i = 0; i < values.length; ++i) {
+                    hide_file(values[i]);
+                }
+                return values;
+            }          
+
+            function show_file(file_name) {
+                file_name=file_name.replace(".","\\.");
+              $("#"+file_name).show();
+            }
+
+            function hide_file(file_name) {
+                file_name=file_name.replace(".","\\.");
+              $("#"+file_name).hide();                
+            }
+            
+            function define_animation(element) {
+                $(element).children("iframe").attr("width","780");
+                $(element).children("iframe").attr("height","468.125");
+                
+                }            
+        </script>
+    </head>
+    <body>
+        <p style="width:50%;background-color:yellow;font-size:30px;">
+            Hello world
+
+        </p>
+        <div class='tab'>
+            Language:
+            <select class='combobox'>
+                <option>stack.cpp</option>
+                <option>stack.java</option>
+            </select>
+        </div>
+        <div id='stack.cpp'>
+
+        </div>
+        <div id='stack.java'>
+
+        </div>
+        <div class="animation">
+<iframe id="animation_frame" src="https://docs.google.com/presentation/d/1yS4VkPxJ_1hsOAEuwoyP1fXJiYS3LWUSX0OeokI1Bkg/embed?start=false&loop=false&delayms=1000" frameborder="0" width="500" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+       
+    </body> 
+</html>

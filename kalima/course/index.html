@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalima Course: One-on-One Live Arabic Lessons for your Kids</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../style/main.css?7540">  
+        <link rel="stylesheet" href="style/course.css?8"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+        <script type='text/javascript' src='../script/Constants.js?7'></script>
+        <script type='text/javascript' src='../script/Template.js?2'></script>
+        <script type='text/javascript' src='../script/General.js?850'></script>
+        <script type='text/javascript' src='script/Main.js?2'></script> 
+        <script id="course-lesson-plan-display-template" type="text/html">
+        <div class="course">
+            <img src="../images/course_images/{{course_icon}}.jpg">
+            <div class="arabic_title" id="arabic_title">
+                {{course_arabic_name}}
+
+            </div>
+            <div class="course_title" id="course_title">
+                {{course_name}}
+            </div> 
+        </div>
+        <div class="course_attributes">
+            <div class="course_attribute">
+            <div class="course_attribute_title">
+               Level
+            </div>
+            <div class="course_attribute_value" id="course_level">
+                {{course_level}}
+
+            </div>
+            </div>
+            <div class="course_attribute">
+            <div class="course_attribute_title">
+                Age Group
+            </div>
+            <div class="course_attribute_value" id="course_age_group">
+                {{course_age_from}} and older.
+
+            </div>
+            </div>            
+            <div class="course_attribute">
+            <div class="course_attribute_title">
+                Dialect
+            </div>
+            <div class="course_attribute_value" id="course_dialect">
+                {{course_dialect}}
+
+            </div>   
+            </div>
+            <div class="course_attribute course_attribute_description">
+            <div class="course_attribute_title">
+                Description
+            </div>
+            <div class="course_attribute_value" id="course_description">
+                {{course_description}}
+            </div>  
+            </div>
+            <div class="course_attribute">
+            <div class="course_attribute_title">
+                Prerequisites
+            </div>
+            <div class="course_attribute_value" id="course_prerequisites">
+                <span id="course_prerequisites_none">
+                    None
+                </span>
+                {{#block prerequisites}}
+                <a href="" class="course_pre_link" id="pre_link_{{course_id}}" target="_blank">
+                    {{course_name}}
+                </a><span id="pre_link_comma_{{course_id}}">, </span>
+                {{#end block prerequisites}}
+            </div>
+            </div>            
+            <div class="course_attribute">
+            <div class="course_attribute_title">
+                Lessons
+            </div>  
+            <div class="course_attribute_value">
+                <div class="course_lessons" id="course_lessons">
+                    {{#block lessons}}
+                    <div class="lesson">
+                    <div class="lesson_number">
+                        {{lesson_number}}
+                    </div>
+                    <div class="lesson_name">
+                        {{lesson_name}}
+                    </div>
+                    <div class="lesson_no_session">
+                        ({{lesson_no_sessions}} sessions)
+                    </div>
+                    </div>
+                    {{#end block lessons}}
+                </div>
+            </div> 
+            </div>
+        </div>            
+
+    </script>          
+</head>
+<body>
+    <div class="utilities">
+        <span id="logo" class="logo">Kalima</span>
+        <img id="menu_icon" class="menu_icon" src="../images/menu.png">
+        <div id="links" class="links">
+            <a href="">Contact us</a><a href="">About us</a><a href="">Features</a><a href="">Log In</a>
+        </div>
+    </div>
+    <div class="course_lesson_plan_display" id="course_lesson_plan_display">
+        
+    </div>
+
+</body>
+</html>

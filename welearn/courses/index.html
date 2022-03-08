@@ -1,0 +1,66 @@
+
+<html>
+    <head>
+        <title>Tech Learn - Courses</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+        <script src="https://mauriciopoppe.github.io/function-plot/js/vendor/d3.js"></script>
+
+       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">       --> 
+        <link rel="stylesheet" href="../style/main.css?300">         
+        <link rel="stylesheet" href="style/courses.css?2980"> 
+        <link href="style/prism.css?300" rel="stylesheet" />  
+        <script type='text/javascript' src='../script/Constants.js?4'></script>
+        <script type='text/javascript' src='../script/Template.js?2'></script>
+        <script type='text/javascript' src='../script/General.js?3013'></script>
+        <script type='text/javascript' src='script/prism.js'></script>        
+        <script type='text/javascript' src='script/Main.js?8'></script>
+        <script type="text/javascript" src="script/function-plot.js"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+      
+          <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--templates-->
+        <script id="lesson-navigation-template" type="text/html">
+        <a class="lesson_navigation" id="lesson_navigation_{{lesson_id}}" data-course-id="{{course_id}}" data-lesson-index="{{index}}">
+           {{lesson_name}}   
+        </a>            
+        </script>    
+        <script id="loading-icon-template" type="text/html">
+            <div style="height:80%;text-align: center;">
+           <i id="loading_icon" class="fa fa-spinner fa-spin" style="margin-top:35px;font-size:70px;color:rgb(81,185,0);"></i>
+           <div style="padding-top:15px;letter-spacing: 6px; color:gray;">Loading Lesson</div>
+            </div>
+        </script>
+    </head>
+    <body>
+        <div class="utilities">
+            <a href="../" class="logo">Tech Learn</a>
+        </div>
+        <div class="course">
+            <div id="course_navigation" class="course_navigation">
+               
+            </div>
+            <div class="top_bar">
+                <div id="close-lessons"><i class="fa fa-times" aria-hidden="true" style="padding-right:7px;"></i>Hide Lessons</div>
+                <div id="show-lessons"><i class="fa fa-list" style="padding-right:7px;"></i>Show Lessons</div>
+                <div class="next_prev_button" id="next-button" style="float:right;margin-right:20px;"><span>Next</span><i class="fa fa-arrow-right" aria-hidden="true" style="padding-left:7px;"></i></div>                
+                <div class="next_prev_button" id="prev-button" style="float:right;"><i class="fa fa-arrow-left" aria-hidden="true" style="padding-right:7px; "></i><span>Previous</span></div>
+                <div id="course-home" style="float:right;"><i class="fa fa-home" style="padding-right:7px;"></i><span>Course Home</span></div>
+            </div>
+            <div class="course_title" >
+                <span id="course_title"></span>
+            </div>
+            <div id="course_content" class="course_content">
+
+              
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+
+<html>
+    <head>
+        <title>Organic Budget Reset Password</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget Reset Password, Reset Password">         
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        
+         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script type='text/javascript' src='../script/help_center_app.js?1'></script>   
+         <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "reset_password"},
+                success: function (data) {
+                }
+            });
+        </script>         
+          
+                 
+        <script>
+            $(document).ready(function () {
+                HELP_CENTER.reset_password_init();
+            });
+        </script>       
+    </head>
+    <body>
+        <div class="heading">
+            <div class='logo' onclick="window.location.assign('..');">
+                <b>Organic</b> <span style='color:black;'> Budget</span>
+            </div>
+        </div>
+        <div class="bread_crumb"><a href="..">Organic Budget</a> > <span id="section_topic">Reset Password</span></div>
+        <div class="question_topic_title_container">
+            <img style="width:90px;" id="question_topic_title_image" src="../images/about_us.png">
+            <div class="question_topic_title" id="question_topic_title">Reset Password</div>
+            <div class="question_topic_description" id="question_topic_description">Use this form to reset your password please.</div>
+        </div>
+
+        <div class="help_center_question_container" id="help_center_question_container">
+            <table class="form">
+                <tr><td class="window-component"><div style='width:150px;' class="window-name">Email *</div><div id="email-feedback" class="item_feedback reset_password_feedback">invalid email</div><input maxlength="30" id="email" class="component" type="text"></td></tr>
+                <tr><td class="window-component"><div style='width:150px;' class="window-name">New Password *</div><div id="password-feedback" class="item_feedback reset_password_feedback">invalid password</div><input maxlength="30" id="password" class="component" type="password"></td></tr>
+                <tr><td class="window-component"><div style='width:150px;' class="window-name">Verify New Password *</div><div id="confirmed_password-feedback" class="item_feedback reset_password_feedback">invalid password</div><input maxlength="30" id="confirmed_password" class="component" type="password"></td></tr>
+                <tr><td class='two-cells' style='padding-top:20px;'><button id="reset-password-button" class="regular_button"><img id="reset_password_loading" src="../images/small_loading.gif">Reset Password</button></td></tr>
+                <tr><td class='two-cells'><div id="window-feedback" class="window_feedback" style="position:relative;border-radius:5px;"></div></td></tr>
+                </table>
+            
+        </div>
+    </body> 
+</html>

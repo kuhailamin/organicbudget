@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- Created with iSpring --><!-- 960 580 --><!--version 8.7.0.19255 --><!--type html --><!--mainFolder ./ -->
+<html style=background-color:white;>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/><meta name="format-detection" content="telephone=no"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="msapplication-tap-highlight" content="no"/><title>Quiz_3</title><link rel="apple-touch-icon-precomposed" href="data/apple-touch-icon.png"/><link rel="shortcut icon" type="image/ico" href="data/favicon.ico"/><style>body {background-color:white;}#spr0_f033582 {display:none;}</style>
+
+    <style>
+		#playerView {
+			position:relative;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			-webkit-touch-callout:none;
+			-webkit-user-drag:none;
+		}
+		#playerView * {
+			position:absolute;
+		}
+    </style>
+</head>
+<body>
+	<div id="preloader"></div>
+	<script src="data/player.js?0DDB3BB9"></script>
+    <div id="content"></div>
+    <button onclick="enlarge();">enlarge</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+		if (!ispring.compatibility.performRedirectIfNeeded("data/html5-unsupported.html"))
+		{
+			(function(startup){
+				function start(savedPresentationState)
+				{
+					var presInfo = "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";
+					PresentationPlayer.start(presInfo, "content", "playerView", onPlayerInit, savedPresentationState);
+					function onPlayerInit(player)
+					{
+						(player);
+					}
+				}
+		
+				if (startup)
+					startup(start);
+				else
+					start();
+			})();
+		};
+                
+
+            $(document).ready(function () {
+                    var ifr=document.getElementById('content');
+                    var child=$("#content").children(".free");
+                    $("#content").children(".free").css("height","100%");   
+       $("#content").children(".free").css("width","100%"); 
+    ifr.onload=function(){
+       $("#content").children(".free").css("height","100%");   
+       $("#content").children(".free").css("width","100%");   
+        
+    };}); 
+
+function enlarge(){
+                      $("#content").children(".free").css("height","100%");   
+       $("#content").children(".free").css("width","100%");   
+}
+        
+  
+    </script>
+</body>
+</html>

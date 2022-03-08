@@ -1,0 +1,697 @@
+body{
+    font-family: CalibriFont, calibri;
+    /*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-size:17px;
+    margin:0px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    text-align: center;    
+}
+@font-face {
+    font-family: logoFont;
+    src: url(fonts/FORTE.TTF);
+}
+
+@font-face {
+    font-family: CalibriFont;
+    src: url(fonts/Calibri.ttf);
+}
+
+@font-face {
+    font-family: CalibriBoldFont;
+    src: url(fonts/Calibri_bold.ttf);
+}
+
+div.topbarcontainer{
+    width:auto;
+    text-align: center;
+}
+
+
+div.topbar, div.topicsbar{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height:30px;
+}
+div.bannarcontainer{
+    margin-top:10px;
+    display:inline-block;
+    width:100%;
+    position:relative;
+    text-align: center;
+}
+div.bannar{
+    position: absolute;
+    bottom:0px;
+    width:100%;
+    height:200px;
+    color:white;
+    background-color:rgba(0,0,0,0.5);
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5), transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0.5), transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0.5), transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0.5), transparent); /* Standard syntax (must be last) */     
+}
+
+div.background{
+    position: relative;
+    float:right;
+    background-image: url('../images/home_picture_10.jpeg');
+    background-color:green;
+    background-size:cover;
+    background-repeat: no-repeat;  
+    background-position:0px 60%;
+    width:100%;
+    height:200px;
+}
+
+div.bannar_logo{
+    margin-top:20px;
+    width:100%;
+    text-align:center;
+    font-family:logoFont;
+    font-size:60px;
+    text-shadow: 2px 2px 4px black;
+    color:white;
+}
+
+
+
+
+@media screen and (min-width: 820px) {
+    div.bannarcontainer{
+        margin-top:0px;
+    }
+    div.bannar{
+        width:400px;
+        height:290px;
+    }
+
+    div.background{
+        width:100%;
+        height:290px;
+    }
+
+    div.bannar_logo{
+        margin-top:110px;
+    }
+}
+
+
+@media screen and (min-width: 1020px) {
+    div.bannar{
+        width:500px;
+        height:500px;
+    }
+    div.background{
+        height:500px;
+    }
+
+    div.bannar_logo{
+        margin-top:140px;
+        text-shadow: -1px 1px 0 #ddd, -2px 2px 0 #c8c8c8, -3px 3px 0 #ccc, -4px 4px 0 #b8b8b8, -4px 4px 0 #bbb, 0px 1px 1px rgba(0,0,0,.4), 0px 2px 2px rgba(0,0,0,.3), -1px 3px 3px rgba(0,0,0,.2), -1px 5px 5px rgba(0,0,0,.1), -2px 8px 8px rgba(0,0,0,.1), -2px 13px 13px rgba(0,0,0,.1);
+
+    }
+
+}
+
+
+
+
+div.bannar div.bannar_moto{
+    margin-top:29px;
+    font-size:16px;
+    text-shadow: 2px 2px 2px black;
+}
+
+div.bannar div.banner_features{
+    margin-top:15px;
+    font-size:17px;
+    background-color:rgba(0,0,0,0.15);
+    width:100%;
+    height:35px;
+    line-height:35px;
+    text-shadow: 2px 2px 2px black;    
+}
+
+div.banner_features span{
+    margin-right:15px;
+}
+
+div.bannar button.learn_more_button{
+    margin-top:30px;
+    background-color:white;
+    color:rgb(63,138,0);
+    font-size:14px;
+    border:1px solid lightgray;
+    border-radius:5px;
+    padding:8px;
+    padding-right:12px;
+    padding-left:12px;
+    font-weight:bold;
+    background: -webkit-linear-gradient(white, rgb(245,245,245)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, rgb(245,245,245)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, rgb(245,245,245)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, rgb(245,245,245)); /* Standard syntax (must be last) */ 
+    display:none;
+}
+
+div.bannar button.learn_more_button:hover{
+    background:rgb(230,230,230);
+    cursor:pointer;
+}
+
+@media screen and (min-width: 1020px) {
+    div.bannar_logo{
+        font-size:100px;
+        width:500px;
+
+    }    
+    div.bannar div.bannar_moto{
+        margin-top:23px;
+        font-size:25px;
+    }
+
+    div.bannar div.banner_features{
+        margin-top:25px;
+        font-size:23px;    
+    }
+
+    div.bannar button.learn_more_button{
+        font-size:15px;
+        margin-top:40px;
+        display:inline-block;
+    }
+}
+
+
+
+
+div.topicsbar{
+    background-color:rgb(245,245,245);
+    margin-top:10px;
+    display:none;
+}
+
+div.topicsbar a{
+    text-decoration:none;
+    margin-right:16px;
+    font-size:14px;
+    color:black;
+    line-height:30px;
+    font-weight: bold;
+}
+
+div.topicsbar a:hover{
+    text-decoration:underline;
+}
+
+@media screen and (min-width: 600px) {
+    div.topicsbar{
+        display:block;
+    }
+}
+
+/*@media screen and (min-width: 600px) {
+div.topbar{
+    left:25%;
+}
+}*/
+
+div.utilities img.menu_icon{
+    float:right;
+    margin-right:10px;
+    width:25px;
+    height:25px;
+    display:block;
+    opacity:0.7;
+}
+
+div.utilities img.menu_icon:hover{
+    border:1px solid black;
+    opacity:1;
+    cursor:pointer;
+}
+
+
+
+div.utilities div.links{
+    display:none;
+    position:absolute;
+    top:45px;
+    right:10px;
+    border:1px solid lightgray;
+    width:auto;
+    padding:5px;
+    background-color:white;
+    z-index:10;
+}
+
+
+
+
+div.topbar .logo, div.utilities .logo, div.navigationcontainer .logo{
+    position:relative;
+    display:inline-block;
+    float:left;
+    height:30px;
+    line-height: 30px;
+    font-family:logoFont;
+    color: rgb(81,185,0); 
+    font-size:18px;
+    font-weight:bold;
+    text-transform:none;
+}
+
+div.topbar .logo{
+    display:none;
+}
+div.topbar div.searchbox{
+    position:relative;
+    display:inline-block;
+}
+
+div.utilities{
+    color: gray;
+    font-size: 13px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-top:15px;
+    padding-right:23px;
+    padding-left:12px;
+    height:45px;
+    width:auto;
+}
+
+div.utilities a{
+    display:block;
+    text-decoration:none;
+    float:none;
+    margin-left:5px;
+    color: gray;
+    font-size: 14px;
+    line-height:25px;
+    margin-top:5px;
+    padding:3px;
+    border-bottom:1px dotted rgb(240,240,240);
+}
+
+div.utilities a:last-child{
+    border-bottom-width:0px;
+}
+
+div.utilities a:hover{
+    color:rgb(63,138,0);
+}
+
+
+@media screen and (min-width: 600px) {
+    div.utilities img.menu_icon{
+        display:none;
+    }
+
+    div.utilities div.links{
+        display:block;
+        position:relative;
+        top:0px;
+        right:0px;
+        border-width:0px;
+        width:auto;
+        padding:0px;
+    }
+
+    div.utilities a{
+        display:inline;
+        float:right;
+        display:relative;
+        padding:auto;
+        margin-left:15px;
+        margin-top:0px;
+        font-size: 13px;  
+        border-bottom-width:0px;
+    }
+    div.topbar .logo{
+        top:0px;
+        font-size:23px;
+        margin-right:30px;
+        display:block;
+    }
+
+    div.utilities .logo{
+        display:none;
+    }
+}
+
+div.topbar div.catalog{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height:28px;
+    line-height:28px;
+    position:relative;
+    float:left;
+    padding-right:6px;
+    padding-left:6px;
+}
+
+div.catalog a{
+    text-decoration: none;
+    color:white;
+}
+
+
+div.searchbox input{
+    background-color:white;
+    color:rgb(20,20,20);
+    height:26px;
+    position:relative;
+    float:left;
+    margin-left:-1px;
+    padding-left:6px;
+    width:174px;
+    border:1px solid rgb(240,240,240);
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, rgb(250,250,250)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, rgb(250,250,250)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, rgb(250,250,250)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, rgb(250,250,250)); /* Standard syntax (must be last) */ 
+    border-bottom-color:lightgray;
+}
+
+div.suggestions_wrapper{
+    position:absolute;
+    left:64px;
+    top:29px;
+    width:190px;
+    height:auto;
+    padding-left:6px;
+    z-index:50;
+    display:none;
+    background-color: white;
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 5px 2px rgb(240,240,240);    
+}
+
+@media screen and (min-width: 300px) {
+    div.searchbox input{
+        width:194px;   
+    } 
+    div.suggestions_wrapper{
+        width:235px;   
+    }     
+}
+
+@media screen and (min-width: 400px) {
+    div.searchbox input{
+        width:274px;   
+    }
+    div.suggestions_wrapper{
+        width:310px;   
+    }     
+}
+
+
+@media screen and (min-width: 500px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:350px;   
+    }   
+}
+
+@media screen and (min-width: 600px) {  
+    div.suggestions_wrapper{
+        left:178px;
+    }  
+}
+
+@media screen and (min-width: 700px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:444px;   
+    }     
+}
+
+@media screen and (min-width: 800px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:544px;   
+    }
+    div.suggestions_wrapper{
+    }      
+}
+
+@media screen and (min-width: 900px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:650px;   
+    }
+    div.suggestions_wrapper{
+    }      
+}
+
+div.searchbox button.find{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height:30px;
+    position:relative;
+    float:left;
+}
+
+
+div.searchbox button.find, div.topbar div.catalog{
+    color:white;
+    background: rgb(81,185,0); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(81,185,0), rgb(56,125,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(81,185,0), rgb(56,125,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(81,185,0), rgb(56,125,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(81,185,0), rgb(56,125,0)); /* Standard syntax (must be last) */  
+    border:1px solid rgb(73,164,0);
+}
+
+div.searchbox button.find:hover, div.topbar div.catalog:hover{
+    background: rgb(73,164,0); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(73,164,0), rgb(56,125,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(73,164,0), rgb(56,125,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(73,164,0), rgb(56,125,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(73,164,0), rgb(56,125,0)); /* Standard syntax (must be last) */ 
+    cursor:pointer;
+}
+
+
+
+div.popular_title{
+    margin-top:10px;
+    width:100%;
+    text-align: center;
+    color:rgb(63,138,0);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:12px;
+}
+
+div.popular_title a{
+    text-decoration: none;
+    color:rgb(63,138,0);
+}
+
+div.popular_title a:hover{
+    text-decoration:underline;
+}
+
+div.popular_title button{
+    margin-left:8px;
+    color:rgb(63,138,0);
+    font-size:12px;
+    border:1px solid rgb(63,138,0);
+    border-radius:5px;
+    padding:4px;
+    padding-right:6px;
+    padding-left:6px;
+    background: -webkit-linear-gradient(white, rgb(245,245,245)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, rgb(245,245,245)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, rgb(245,245,245)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, rgb(245,245,245)); /* Standard syntax (must be last) */    
+}
+
+div.popular_title button:hover{
+    background:rgb(245,245,245);
+    cursor:pointer;
+}
+
+@media screen and (min-width: 500px) {
+    div.popular_title{
+        font-size:14px;
+
+    }
+}
+
+table.course{
+    position:relative;
+    display: inline-block;
+    border:2px solid rgb(225,225,225);
+    border-radius: 5px;
+    border-collapse:separate;
+    margin-top:10px;
+    margin-right:10px;
+    padding-bottom:10px;
+    width:80%;
+    min-width:270px;
+}
+
+table.course:hover{
+    background-color:rgb(245,245,245);
+    border-color:green;
+    border-width:2px;
+    cursor:pointer;
+}
+
+table.course td{
+    padding:4px;
+    text-align:left;
+    font-size:13px;
+}
+
+table.course tr.title_row{
+    background-color:rgb(245,245,245);
+    font-weight: bold;
+    font-size:15px;
+    text-align: center;
+}
+
+table.course tr.title_row td{
+    padding:6px;
+    padding-top:8px;
+    padding-bottom:8px;
+    height:35px;
+    font-size:13px;
+    text-align:center;
+    width:600px;
+}
+
+table.course td.title_cell{
+    color:gray;
+    text-align: right;
+    padding-left:7px;
+    font-size:14px;
+    width:100px;
+}
+
+@media screen and (min-width: 400px) {
+  table.course td.title_cell{
+    width:170px;
+}  
+    
+}
+
+table.course span{
+    background-color:black;
+    color:white;
+    padding:2px;
+    padding-right:5px;
+    padding-left:5px;
+    border-radius:5px;
+    margin-right:10px;
+}
+
+table.course td.logo_cell img{
+    width:50px;
+    height:50px;
+}
+
+@media screen and (min-width: 600px) {
+    table.course{
+        width:270px;
+    }
+table.course tr.title_row td{
+    width:270px;
+}
+
+table.course td.title_cell{
+    width:100px;
+}
+}
+
+
+
+div.course_boxes{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+
+@media screen and (min-width: 800px) {
+    div.course_boxes{
+        width: 800px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    div.course_boxes{
+        width: 100%;
+    }
+}
+
+
+
+footer {
+    clear: both;
+    margin-top: 20px;
+    padding: 20px 0px 20px 0px;
+    border-top: 1px solid lightgray;
+    width: auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+footer span.copyrights, footer a {
+    color: rgb(56,56,56);
+    margin: 0px 10px 0px 10px;
+    text-decoration: none;
+}
+
+footer a:hover{
+    text-decoration: underline;
+
+}
+
+div.search_suggestion{
+    position:relative;
+    text-align:left;
+    border-bottom:1px solid rgb(240,240,240);
+    border-top-width: 0px;
+    width:98%;
+    height:35px;
+    line-height:35px;
+    padding-left:1%;
+    margin-top:-1px;
+    overflow:hidden;
+    text-overflow:ellipsis;  
+}
+
+div.search_suggestion_highlighted{
+  background-color:rgb(240,240,240);  
+}
+
+
+
+div.search_suggestion:last-child{
+    border-bottom-width: 0px;
+}
+
+
+div.search_suggestion:hover{
+    cursor:pointer;
+    background-color:rgb(240,240,240);
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Tech Learn: High-Quality Free Courses that combine text, animation, and video</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../style/main.css?20"> 
+        <link rel="stylesheet" href="style/course_search.css?2">  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+        <script type='text/javascript' src='../script/Constants.js?6'></script>
+        <script type='text/javascript' src='../script/Template.js?6'></script>
+        <script type='text/javascript' src='../script/General.js?100'></script>
+        <script type='text/javascript' src='../script/Main.js?6'></script> 
+        <script type='text/javascript' src='script/Main.js?6'></script>         
+        <!--templates-->
+        <script id="course-template" type="text/html">
+        <table id="course_{{course_id}}" class="course">
+            <tr class="title_row">
+                <td colspan="3">{{course_name}}</td>
+            </tr>
+            <tr>
+                <td class="title_cell">Difficulty: </td>
+                <td>{{course_difficulty}}</td>
+                <td class="logo_cell" rowspan="2"><img src="../courses/{{course_link}}/images/logo.jpg"></td>
+            </tr>
+            <tr>
+                <td class="title_cell">Lessons: </td>
+                <td id="course_num_lessons_{{course_id}}">20</td>
+            </tr>
+            <tr id="course_available_in_row_{{course_id}}">
+                <td class="title_cell">Available in:</td>
+                <td colspan="2" id="course_available_in_cell_{{course_id}}"></td>
+            </tr>
+        </table> 
+    </script> 
+    <script id="programming-language-template" type="text/html">
+        <span>
+            {{programming_language_name}}
+        </span>
+    </script>  
+    <script id="course-search-suggestion-template" type="text/html">
+        <div id="course_search_suggestion_{{course_id}}" class="search_suggestion" data-course-id="{{course_id}}" data-course-name="{{course_name}}">
+            {{highlighted_course_name}}
+        </div>
+    </script>     
+</head>
+<body>
+    <div class="utilities">
+        <a href="../" class="logo">Tech Learn</a>
+        <img id="menu_icon" class="menu_icon" src="../images/menu.png">
+        <div id="links" class="links">
+            <a href="">Contact us</a><a href="">About us</a><a href="">Features</a>
+        </div>
+    </div>
+    <div class="navigationcontainer">
+        <a class="link" href="../">We Learn</a>
+        <span class="arrow"> > </span>
+        <span  class="arrow current"> Course Search </span>
+    </div>
+    <div class="topbarcontainer">
+        <div class="topbar">
+            <div class="searchbox">
+                <input id="course_search_box" placeholder="Search for courses " type="text">
+                <button id="course_search_button" class="find material-icons">search</button>
+                <div id="course_suggestions_wrapper" class="suggestions_wrapper">
+                    
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:20px; margin-bottom:15px;"> 
+        <span class="popular_title">
+            Course Search
+        </span>
+    </div> 
+    
+    <div id="courses">
+        <i id="loading_icon" class="fa fa-spinner fa-spin" style="font-size:24px;color:rgb(81,185,0);"></i>
+    </div>
+
+    <footer>
+        <span class="copyrights">We Learn &copy; 2017</span>·<a href="/about_us/" target="_blank">About us</a>·<a target="_blank" href="/contact_us/">Contact us</a>
+        <a target="_blank" href="/help_center">Help Center</a>·<a target="_blank" href="/privacy_policy/">Privacy</a>·<a target="_blank" href="/terms_of_service/">Terms of Service</a>
+    </footer>  
+</body>
+</html>

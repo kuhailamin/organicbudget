@@ -1,0 +1,135 @@
+<div class="big_heading">
+    Data Structures and Algorithms in C++
+</div>
+<ul>
+<li>
+    <b>A data structure</b> is a particular memory arrangement of data that is suited for solving a particular problem.
+    For example, <a href='./?course_id=2&lesson_index=5'>stacks</a> are based on the last-in-first-out principle (LIFO), and are suited for evaluating mathematical and undo/redo applications. 
+    As another example, <a href='./?course_id=2&lesson_index=6'>queues</a> are based on the first-in-first-out principle (FIFO), and are suited for providing access in a fair manner to a shared resource.
+</li>
+<li>
+    This course gives an overview of different linear and non-linear data structures. 
+    Examples of linear data structures include vectors, linked lists, queues, etc.
+    Examples of non-linear data structures include trees and graphs.
+    The course also introduces various algorithms for building and operating on the different data structures we will discuss in the course.
+</li>
+</ul>
+<iframe  src="https://www.youtube.com/embed/-Q185BYuhJ4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div class="medium_heading">
+    Prerequisites
+</div>
+<p>
+    Basic knowledge of <a target='new' href='./?course_id=6&lesson_index=0'>programming in C++</a>
+</p>
+<div class="medium_heading">
+    What are data structures used for?
+</div>
+<ul>
+    <img class="small_picture" src="money.jpeg">    
+    <li>
+        They can be used for <b>storing data</b>, such as financial data, employee data, student data, etc. 
+        The emphasis here is on quick insertion, addition, search, and deletion.
+    </li> 
+    <li>
+        They can be used for <b>programmer's tools</b>: Data structures such as hash tables, trees, and stacks can be used
+        for keeping track of variables as well as evaluating and parsing programming statements.
+    </li>   
+    <img class="small_picture" src="airplane.jpeg">     
+     <li>
+         They can be used for <b>real-world modeling</b>: We can model real-world situations with data structures. For instance, we 
+         can model airline routes or road maps with graphs. The graph nodes may, for instance, represent road intersections and the edges
+         may represent the weights (e.g. distances).
+    </li>    
+</ul>
+<div class="medium_heading">
+    Overview of Data Structures
+</div>
+<p>
+    This course will cover the following data structures in some details:
+</p>
+<div class="table_container">
+<table>
+    <tr class="table_header">
+        <th>Data Structure</th><th style="min-width:200px;">Advantages</th><th style="min-width:200px;">Disadvantages</th>
+    </tr>
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=3'>Vectors</a></td><td>Looking up items by index is fast</td><td>Slow search</td>
+    </tr>
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=4'>Linked Lists</a></td><td>Quick addition and deletion</td><td>Slow search</td>
+    </tr>    
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=5'>Stacks</a></td><td>Last-In-First-Out (LIFO)</td><td>Slow otherwise</td>
+    </tr> 
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=6'>Queues</a></td><td>First-In-First-Out (FIFO)</td><td>Slow otherwise</td>
+    </tr>
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=11'>Trees</a></td><td>Fast search, deletion, and insertion</td><td>Complex</td>
+    </tr>
+    <tr>
+        <td><a href='./?course_id=2&lesson_index=18'>Graphs</a></td><td>Model real-life situations</td><td>Some algorithms may be slow and complex</td>
+    </tr>     
+</table>
+</div>
+<div class="medium_heading">
+    What is an algorithm?
+</div>
+<ul>
+    <img class="medium_picture no_borders" src="algorithm_illustration.jpg">
+<li>
+    An algorithm is a step-by-step procedure that aims at solving a computational problem. Further, an algorithm typically has an input and an output. 
+    For instance, a sorting algorithm is an algorithm that solves the problem of sorting a set of numbers. The input is a set of unsorted numbers, and the output is the set of numbers being sorted.
+</li>
+<li>
+    Ideally an algorithm should be correct, readable, and efficient.
+</li>
+</ul>
+<div class="medium_heading">
+    Algorithm vs. Function
+</div>
+<ul>
+    <li><i>What is the difference between an algorithm and a function?</i></li>
+    <li><b>A function </b>is an implementation of an algorithm in a certain programming language such as C++.</li>
+    <li><b>An algorithm </b>is an abstract representation of a computational procedure. It is written in pseudo code. Computer scientists use 
+    it so that they don't have to worry about specificities of a certain language. Software engineers can easily 
+    implement an algorithm in a specific language later on.
+    </li>
+    <li>Unlike function code, algorithm code is not standardized. Hence, there may be many different
+    ways to write the same algorithm. However, it is imperative that the algorithm code is easy to read.
+    </li>
+    <li>
+        Sometimes the terms "function" and "algorithm" are used interchangeably. Generally speaking, a function can also be considered an algorithm. 
+    </li>
+    <li> <b>Algorithm Example:</b></li>
+</ul>
+    <pre class="line-numbers">
+<code class="language-c"> Input:   A[0], A[1], …, A[n-1]
+ Output: arrange the n numbers such that A[0] &le; A[1] &le; … &le; A[n-1].
+ Algorithm: Selection Sort
+ for (i = 0, i &le; n-1, i++){	
+     find j such that 
+ 	    A[j]= min{A[i], A[i+1], …, A[n-1]}
+  	    A[i]= A[j]
+ }</code>
+</pre>
+<ul>
+    <li>
+        <b>C++ Function Example:</b></li></ul>
+<pre class="line-numbers">
+<code class="language-cpp">void selection_sort(vector&lt;Item&gt;& A){
+        for(int i=0;i &le; n-1;i++){
+          int min_index=min(A);
+          swap(A[i],A[min_index]);
+        }
+    }</code>
+</pre>        
+<div class="medium_heading">
+    Course Learning Objectives
+</div>
+<ol>
+    <li>Learn how to analyze the performance of an algorithm with the Big O notation.</li>    
+    <li>Learn how to build various data structures such as stacks, queues, linked lists, etc.</li>
+    <li>Be familiar with applications of data structures.</li>
+    <li>Learn about sorting algorithms, how they work, and analyze their performance.</li>    
+</ol>

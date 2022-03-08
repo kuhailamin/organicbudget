@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Organic Budget - Log In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget Log In, Log In">         
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/login_app.css?1'>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+        <script type='text/javascript' src='../script/login_app.js?1'></script>
+        
+        
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "login"},
+                success: function (data) {
+                }
+            });
+        </script>         
+                
+    </head>
+    <body>
+        <div id="menu" class="homepage_menu">
+            <div class="close"><img id="menu_close_icon"  src="../images/close.png"></div>
+            <div class="menu_item">Settings</div>
+            <div class="menu_item">Help</div>
+            <div class="menu_item">Log In/div>
+                <div class="menu_item">Sign Up</div>
+            </div>
+        </div>
+        <div class="desktop_container">
+            <div onclick='window.location.assign("..");'  class="desktop_logo_center">
+                <span class="desktop_logo"><b>Organic</b><span style='color:black;'> Budget</span></span>
+            </div>
+            <div class="block"> 
+                
+                <div class="login_form">
+                    <div class="feedback" id="log_in_feedback">Feedback</div>
+                    <form id="login_form" name="login_form">
+                        <div class="item">
+                            <input name="email" type="text" placeholder="Email">
+                        </div>
+                        <div class="item">
+                            <input name="password" type="password" placeholder="Password">
+                        </div>
+                        <div id="login_button" class="main_button login_button"><img id="login_loading" src="../images/small_loading.gif">Log In</div>
+                    </form>
+
+                    <div class='forgot_password_div' onclick='window.location.assign("../forgot_password/");' >Forgot your password?</div>
+
+                    <div class="small_line"></div>
+                    <div class="small_line_heading"> New to Organic Budget?</div>
+                    <div onclick='window.location.assign("../signup/");' class="secondary_button login_button"><a href="../signup/">Sign Up</a></div>
+                </div>
+
+            </div> 
+
+        </div>        
+
+
+    </body>
+</html>

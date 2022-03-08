@@ -1,0 +1,80 @@
+
+<html>
+    <head>
+        <title>Organic Budget Help Center</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget Help Center, Help Center">         
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        
+                
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script type='text/javascript' src='../script/help_center_app.js?1'></script> 
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "help_desk"},
+                success: function (data) {
+                }
+            });
+        </script>           
+              
+        <script>
+            $(document).ready(function () {
+                HELP_CENTER.show_main_sections();
+            });
+        </script>
+        <script id="help-center-section-template" type="text/html">
+        <div id="help_center_section_{{id}}" data-help-center-section="{{name}}" class="help_center_section">
+            <img src="{{image}}">
+            <div class="help_center_section_title">{{name}}</div>
+        </div>
+    </script>    
+    <script id="search-suggestions-template" type="text/html">
+        <div id="help_center_search_suggestion_{{index}}" data-section-id="{{section_id}}" data-question-id="{{question_id}}" class="help-center-suggestion">
+            {{section_name}}: {{question_title}}
+        </div>
+    </script>
+</head>
+<body>
+    <div class="heading">
+        <div class='logo' onclick="window.location.assign('..');">
+            <b>Organic</b> <span style='color:black;'> Budget</span>
+        </div>
+    </div>
+    <div class="title">Organic Budget Help Center</div>
+    <div class="search_box_div">
+        <input id='search-box' type="text" placeholder="Search for a topic" >
+        <button id="contact-us-button" class="button contact_us_button"><a style="color:white; text-decoration:none;" href="../contact_us/" target="_blank">Contact us</a></button>   
+        <div class='help-center-suggestion-wrapper'>
+            <div id='help-center-suggestions' class='help-center-suggestions'>               
+            </div>
+        </div>       
+    </div>   
+
+    <div class="help_center_container" id="help_center_container">
+
+    </div>    
+    <footer style="margin-top:100px;">
+        <span class="copyrights">Organic Budget &copy; 2017</span>·<a target='_blank' href="../about_us/">About us</a>·<a href="../contact_us/" target="_blank">Contact us</a>
+        ·<a href="../privacy_policy/" target="_blank">Privacy</a>·<a href="../terms_of_service/" target="_blank">Terms of Service</a>
+    </footer> 
+    <div class="help_center_container" style="margin-top:0px;margin-bottom:100px;">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- help_center_ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9651537267508961"
+             data-ad-slot="9908539535"
+             data-ad-format="auto"></ins>
+        <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>      
+</body> 
+</html>

@@ -1,0 +1,547 @@
+<div class="big_heading">
+    Algorithm Efficiency
+</div>
+<ul>
+    <li>
+        Algorithms must be correct, readable, and efficient. An efficient algorithm is efficient in terms of time and memory usage. 
+    </li>
+    <li>
+        Time efficiency can be called <b>performance</b>. Ideally algorithms should spend as little time as possible to have good performance.
+        Furthermore, for an algorithm to be memory efficient, it should use as little space as possible.
+    </li>
+    <li>
+        The time spent and memory space needed are called <a href="#time_complexity">time complexity</a> and <a href="#space_complexity">space complexity</a>, respectively.     
+    </li>    
+</ul>
+<div id="time_complexity" class="medium_heading">
+    Can We Measure Performance with CPU Clock?
+</div>
+<ul>
+    <li>
+        Imagine that we have a function that simply sums the numbers from 1 to 1000000.
+        Can we simply measure the time performance with the CPU clock as shown in the code?
+    </li>
+</ul>
+
+<pre class="line-numbers" data-line="1,8,10">
+<code class="language-cpp">clock_t start = clock(); //start the clock   
+/** begin the algorithm **/
+int sum = 0;  
+for (int i = 0; i < 1000000; i++)
+ sum += i;
+/** end the algorithm **/
+
+clock_t end = clock(); //end the clock
+
+double elapsed_milli_seconds = double(end - start) / (double)CLOCKS_PER_SEC * 1000;
+</code>
+</pre>
+<ul>
+    <li>Unfortunately, this method for measuring the performance is not reliable because measuring the performance is affected by multiple factors:
+        <ol>
+            <li>
+                The Speed of the CPU
+            </li>
+            <li>
+                The compiler used to compile the code.
+            </li>
+            <li>
+                The programming language.
+            </li>
+        </ol>
+    </li>
+    <li>While it may be useful to measure the performance by timing the algorithm, it remains unreliable. </li>
+    <li>Fortunately, we can assess the performance of a function independently of the CPU, compiler, and programming language by means of calculating the <i>time complexity</i>.</li>
+</ul>
+<div id="time_complexity" class="medium_heading">
+    Time Complexity
+</div>
+<ul>
+    <li>
+        The time complexity of an algorithm can be represented by a function from the input size to the time required by the algorithm to produce corresponding result.    
+    </li>
+    <li>
+        To estimate the time complexity of an algorithm, we count the number of basic operations executed by the algorithm 
+        and use this number to represent the time complexity of a given algorithm. 
+    </li>
+    <li> Time complexity can be represented by means of T(n). T(n) is a function of the algorithm input size that represents the time complexity</li>
+    <li>Time complexity can also be represented by its <a href=#asymptotic_behavior>asymptotic behavior</a>.</li>
+</ul>
+<p> <span class='example'> Example 1</span> <b>Calculate the time complexity for the following function:</b></p>
+<pre class="line-numbers">
+<code class="language-cpp">/** function that finds an item in a vector using linear search **/
+    int linear_search(const vector&lt;int&gt; A&amp;, int target){
+    for(int i=0;i &lt; A.size();++i){
+        if(A[i]==target) //if the item is found
+           return i; //return the index
+        }
+        return -1; //we have looked through the entire array, -1 means not found
+    }</code>
+</pre>
+
+<p><span class='solution'>Solution</span> Take a look at the annotated code below:</p>
+
+<pre class="line-numbers" data-line="3-7">
+<code class="language-cpp">/** function that finds an item in a vector using linear search **/
+    int linear_search(const vector&lt;int&gt; A&amp;, int target){
+    for(int i=0;i &lt; A.size();++i){   /* runs n times */
+        if(A[i]==target)   /* runs 1 time */
+           return i;   /* runs 1 time */
+        }
+        return -1;   /* runs 1 time */
+    }</code>
+</pre>
+<ul class='circle_list'>
+    <li>The following analysis is based on the <a href='#worst_average_best_case'>worst-case scenario</a>, the maximum number of steps needed to find an item.</li>
+    <li> <span class='code_line'> Line 3</span>: is a loop that runs \(n \, \) iterations (\(n \, \) represents the array size.) Hence, for simplicity, we say it runs \(n \, \) times.</li>
+    <li><span class='code_line'>Line 4</span>: is an <code>if </code> statement that has a condition. The condition runs \(1 \, \) time.</li>
+    <li><span class='code_line'>Line 5</span>: is a <code>return</code>  statement. This statement only runs when the <code>if</code> the statement is true, and then the function will terminate</li>    
+    <li><span class='code_line'>Line 7</span>: is a <code>return</code>  statement. This statement only runs once at the end of the <code>for</code> loop if we don't find the item.</li>    
+    <li>To put it into a formula,   \(T(n)=a+b \times i \,\,\,\, where \, \)  
+        \(i \, \) represents the number of iterations as a function of \(n \, \), \(b \, \) represents the number of statements in the loop ,
+        \(a \, \) represents the number of additional statements (does not depend on the loop iterations).
+    </li>
+    <li>
+        Let's substitute our variables with numbers: 
+        <ul class='disc_list'>
+            <li>\(i \, \) corresponds to the number of times the loop on <span class='code_line'>Line 3</span>. Therefore,  it can be substituted with \(n \, \).  </li>
+            <li>\(b \, \) corresponds to the number of statements inside the loop. Therefore, it can be substituted with \(1 \, \) (See <span class='code_line'>Line 4</span>.)</li>
+            <li>\(a \, \) corresponds to the number of statements independent of the loop. When the item in the array is found, either <span class='code_line'>Line 5</span> or <span class='code_line'>line 7</span> is executed. 
+                Hence, \(a \, \) can be substituted with 1.</li>
+            <li> Hence,&nbsp; \(T(n)=1+n \, \)</li>
+        </ul>
+    </li>
+</ul>
+<p><span class='example' id="example_2">Example 2</span> <b>Calculate the time complexity for the following function: </b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i=0; i&lt;3; i++) {
+  for(int j=0; j&lt;4; j++) {
+    Simple statement
+   }
+}</code>
+</pre>
+<p><span class='solution' id='example_2_solution'>Solution</span></p>
+<ul class="circle_list">
+    <li>The simple statement will run in the following cases: 
+        <ul class='disc_list'>
+            <li>When \(i=0,\, j=0,1,2,3 \Rightarrow \,\, \) the statement runs \(4\) times.</li>
+            <li>When \(i=1,\, j=0,1,2,3 \Rightarrow \,\, \) the statement runs \(4\) times.</li>
+            <li>When \(i=2,\, j=0,1,2,3 \Rightarrow \,\, \) the statement runs \(4\) times.</li>
+            <li><span class="highlighted"><b>Conclusion: </b> The statement runs \(3 \times 4 = 12\,\) times</span></li>
+        </ul>
+    </li>
+    <li>We can solve it differently. Notice that the inner loop <b>doesn't depend</b> on the outer loop (variable \(j \) doesn't point to \(i \))</li>
+    <li>Hence, we can say \( T(n) = a \times b \, \) where \(a\) is the number of times the outer loop runs. and
+        \(b\) is the number of times the inner loop runs.
+    </li>
+    <li>In our case, the outer loop runs 3 times, and the inner loop runs 4 times.</li>
+    <li>Therefore, &nbsp; \( T(n) = 3 \times 4 = 12 \)</li>
+</ul> 
+<p><span class='example' id="example_3">Example 3</span> <b>Calculate the time complexity for the following function:</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i=0; i&lt;n; i++) {
+  for(int j=0; j&lt;n; j++) {
+    Simple statement
+   }
+}
+</code>
+</pre>
+<p><span class='solution'>Solution</span></p>
+<ul class="circle_list">
+    <li>Following the logic of <a href='#example_2_solution'>example 2's solution:</a></li>
+    <li>\( T(n) = n \times n \, = {n}^{2} \) </li>
+</ul>
+<p><span id="example_4" class='example'>Example 4</span> <b>Calculate the time complexity for the following function:</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i=0; i&lt;n; i++) {
+  for(int j=i; j&lt;n; j++) {
+    //1 Simple statement
+   }
+  } </code>
+</pre>
+<p><span class='solution' id='example_4_solution'>Solution</span></p>
+<ul class="circle_list">
+    <li>Notice that in this example, the inner loop is dependant on the outer loop (we have
+        variable \(j\) pointing to variable \(i\).)
+    </li>
+    <li>Because of the loop dependency, we can not solve this problem by simply multiplying the complexities of the loops (as we did in <a href="#example_2">example 2 </a> and <a href="#example_3">example 3</a>).</li>
+    <li>Instead, we have to work out the complexity step by step (using the summation method).</li>
+    <li>First, we look at the range of values that \(i\) can have: \(  \{ 0,1,2,...,n-3,n-2,n-1 \} \) </li>
+    <li>In order to work out \(T(n)\), the number of times the simple statement will run, we need to
+        substitute the values of \(i\) in the inner loop as follows:
+        <ul class="disc_list">
+            <li>
+                When  \(i=0\), the simple statement runs <span class="highlighted"> \(n\) times</span> (see the code below)
+                <pre>
+<code class="language-cpp"> for(int j=0; j&lt;n; j++)
+    //1 Simple statement</code>
+                </pre>
+            </li>
+            <li>
+                When  \(i=1\), the simple statement runs <span class="highlighted">\(n-1\) times</span> 
+                <pre>
+<code class="language-cpp"> for(int j=1; j&lt;n; j++)
+    //1 Simple statement</code>
+                </pre>
+            </li>
+            <li>
+                When  \(i=3\), the simple statement runs <span class="highlighted">\(n-2\) times</span>
+                <pre>
+<code class="language-cpp"> for(int j=2; j&lt;n; j++)
+    //1 Simple statement</code>
+                </pre>
+            </li> 
+            <li>
+                When  \(i=n-2\), the simple statement runs <span class="highlighted">\(2\) times </span>
+                <pre>
+<code class="language-cpp"> for(int j=n-2; j&lt;n; j++)
+    //1 Simple statement </code>
+                </pre>
+            </li>
+            <li>
+                When  \(i=n-1\), the simple statement runs <span class="highlighted">\(1\) time </span>
+                <pre>
+<code class="language-cpp"> for(int j=n-1; j&lt;n; j++)
+    //1 Simple statement </code>
+                </pre>
+            </li> 
+            <li>
+                Therefore,<span class="highlighted"> \(T(n)=n+n-1+n-2+...+2+1\) </span>
+            </li>
+
+        </ul>
+    </li>
+    <li>To formulate \(T(n)\) as a summation, we say \( T(n)= \sum_{i=1}^{n} i \)
+    </li>
+    <li>This mathematical series is well known as <a href="#triangular_numbers_wikipedia"> the triangular number series</a>.
+    </li>
+    <li>It can be simplified as follows: \( T(n)= \sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \frac{1}{2}n^2+\frac{1}{2}n \).</li>
+
+</ul>
+<div class="medium_heading">
+    Function Growth - Big O Notation
+</div>
+<ul>
+    <li>In <a href="#example_4">example 4</a>, we concluded that \( T(n)= \frac{1}{2}n^2+\frac{1}{2}n \). While this is a correct way of expressing time complexity, it
+        remains a little long. We need an easier way to express time complexity.
+    </li>
+    <li>
+        Ultimately what matters is how \( T(n) \) grows as the value of \( n \) becomes very large. This is what we call
+        the <span class="highlighted">Order of Magnitude</span>.
+    </li>
+    <li>
+        As the value of \( n \) grows, only the significant part of \( T(n) \) starts to make a noticeable difference.
+        In our example, the most significant part of \( T(n) \) is \( n^2 \).
+    </li>
+    <li>
+        Hence, we can express the time complexity in terms of <span class="highlighted">\( O(n) = n^2 \)</span>.
+    </li>
+    <li>
+        \( O(n)\), also called the <a href="#big_o_notation">big O notation</a>, is used to classify algorithms according to how their running 
+        time or space grows as the input size grows.
+    </li>
+    <li>
+        To prove that \( \frac{1}{2}n^2+\frac{1}{2}n \) &nbsp;is&nbsp; \( O(n^2)\), we need to prove that \( c\,\, O(n^2)\ \ge \frac{1}{2}n^2+\frac{1}{2}n\)&nbsp; for \(n \le n_0\)&nbsp;where \(c\) is a constant that is \(\gt 0\).
+        In other words, we are trying to prove that \( n^2\) performs similar or worse than \(\frac{1}{2}n^2+\frac{1}{2}n\) in the long run.
+    </li>
+    <li>
+        <b>Proof:</b> To prove that \( c\,\, O(n^2)\ \ge \frac{1}{2}n^2+\frac{1}{2}n\), we use some algebra.
+        <ul class="disc_list">
+            <li>\( c\,\, n_0^2\ = \frac{1}{2}n_0^2+\frac{1}{2}n_0\) &nbsp;&nbsp;we divide both sides by  \( n_0^2\)</li>
+            <li>\( c\,\,  = \frac{1}{2}+\frac{1}{2 n_0}\) &nbsp;&nbsp;we choose a value for \(n_0=1\) since it makes the calculation easy</li>
+            <li>Therefore, \( c=1 \)</li>
+            <li><span class="highlighted">Therefore, we say  \( n^2\ \ge \frac{1}{2}n^2+\frac{1}{2}n\)&nbsp;&nbsp;for &nbsp; \(n \gt 1\) </span></li>
+            <li>Take a look at the following graph. Notice that \( n^2\) performs higher than \(\frac{1}{2}n^2+\frac{1}{2}n\) as soon as the value of \(n \) goes beyond one.</li>
+        </ul>
+    </li>
+
+</ul>
+<div class="graph" data-script="complexity_graph_1">
+    <div class="legend">
+        <span class="color" style="background-color:red;"></span> \( n^2 \)
+        <span class="color" style="background-color:blue;"></span> \( \frac{1}{2}n^2+\frac{1}{2}n \)
+    </div>    
+    <div class="inner_graph" id="complexity_graph_1">
+
+    </div>
+</div>
+<p class='task_divider'></p>
+<div class="medium_heading">
+    Tasks - Time Complexity and Big O Notation
+</div>
+<p><span id="example_4" class='task'>Task 1</span> <b>Calculate \(T(n)\) and \(O(n)\)  for the following function:</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i=n; i>=1; k--) 
+  for(int j=1; j<=n; j++) 
+    for(int k=0; k<=n; i++) {
+    //statement 1
+    //statement 2
+}</code>
+</pre>
+<p><span id="task_1_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_1_solution_detail" class="task_solution_detail">
+    <ul>
+        <li>Take a look at the annotated code below:</li>
+    </ul>
+    <pre class="line-numbers">
+<code class="language-cpp"> for(int i=n; i>=1; k--) /** costs n **/
+  for(int j=1; j<=n; j++) /** costs n **/
+    for(int k=0; k<=n; i++) { /** costs n+1 **/
+    //statement 1  /** costs 1 **/
+    //statement 2  /** costs 1 **/
+}</code>
+    </pre>  
+    <ul>
+        <li>All the loops are independent (\(j\) does not refer \(i\), and \(k\) does not refer to \(j\) nor \(i\)). </li>
+        <li>Therefore, to calculate \(T(n)\), we simply multiply the time complexity of each loop together, and multiply that with the number of statements. (see  <a href='#example_2_solution'>example 2's solution</a>.)</li>
+        <li>Therefore,<span class='highlighted'> \( T(n) = n \times n \times (n+1) \times 2 \, = 2{n}^{3}+2{n}^{2} \)</span> </li>
+        <li><span class='highlighted'>\( O(n) = {n}^{3} \)</span> (we get rid of the less significant parts and the constants)</li>
+    </ul>
+</div>
+<p class='task_divider'></p>
+<p><span class='task'>Task 2</span> <b>Prove that \( {n}^{3}+ 2{n}^{2} + 1  \) is \(O({n}^{3})\)</b></p>
+<p><span id="task_2_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_2_solution_detail" class="task_solution_detail">
+    <ul>
+        <b>Proof:</b> We need to prove that \( c\,\, O(n^3)\ \ge {n}^{3}+ 2{n}^{2} + 1\).
+        <ul class="disc_list">
+            <li>\( c\,\, n_0^3\ = {n_0}^{3}+ 2{n_0}^{2} + 1 \) &nbsp;&nbsp;we divide both sides by  \( n_0^3\)</li>
+            <li>\( c\,\,  = 1+\frac{2}{n_0}+\frac{1}{n_0^3}\) &nbsp;&nbsp;we choose a value for \(n_0=1\) since it makes the calculation easy</li>
+            <li>Therefore, \( c=4 \)</li>
+            <li><span class="highlighted">Therefore, we say  \( 4 n^3\ \ge {n}^{3}+ 2{n}^{2} + 1\)&nbsp;&nbsp;for &nbsp; \(n \gt 1\) </span></li>
+            <li>Take a look at the following graph.</li>
+        </ul>        
+    </ul>
+    <div class="graph" data-script="task_2_graph">
+        <div class="legend">
+            <span class="color" style="background-color:red;"></span> \( 4 n^3 \)
+            <span class="color" style="background-color:blue;"></span> \( {n}^{3}+ 2{n}^{2} + 1 \)
+        </div>    
+        <div class="inner_graph" id="task_2_graph">
+
+        </div>
+    </div>    
+</div>
+<p class='task_divider'></p>
+<p><span class='task'>Task 3</span> <b>Write \( T(n)  \) and \(O(n)\) for the following function</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i = 0; i < n; i += 2 ) {
+ //simple statement
+}</code>
+    </pre>
+<p><span id="task_3_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_3_solution_detail" class="task_solution_detail">
+    <ul>
+            <li>One easy solution to this problem is to experiment with some numbers for  \( n\), and see how many times the
+            statement runs. To make the analysis easy, we choose even numbers for \( n\) because the loop is being incremented by \( 2\).
+            </li>
+            <li>When \( n=8\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={0,2,4,6}\))</span></li>
+            <li>When \( n=6\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={0,2,4}\))</span></li>
+            <li>When \( n=4\),&nbsp;&nbsp;the statement runs \(2\) times <span class="minor">(when \(i={0,2}\))</span></li>
+            <li>When \( n=2\),&nbsp;&nbsp;the statement runs \(1\) time <span class="minor">(when \(i=0\))</span></li>
+            <li>So far our analysis is based on even numbers, and according to the pattern we got, \( T(n)=\frac{n}{2} \).
+                However, this does not accommodate odd numbers. Let's see the pattern in case of some odd values: 
+            </li>   
+            <li>When \( n=7\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={0,2,4,6}\))</span></li>
+            <li>When \( n=5\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={0,2,4}\))</span></li>
+            <li>Taking odd values into consideration, we can now say that 
+                <span class='highlighted'>\(T(n)=\lceil \frac{n}{2} \rceil \)</span> <span class='minor'>\(\lceil n \rceil \) is the ceiling, which is the smallest integer than is greater than \(n \) </span>
+            </li> 
+            <li>
+                <span class='highlighted'>\(O(n)=n \)</span><span class='minor'> (We get rid of constants and the ceiling)</span>
+            </li>
+    </ul>    
+</div>
+<p class='task_divider'></p>
+<p><span class='task'>Task 4</span> <b>Write \( T(n)  \) and \(O(n)\) for the following function</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for(int i=n;i>0; i/=2) 
+      //simple statement</code>
+    </pre>
+<p><span id="task_4_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_4_solution_detail" class="task_solution_detail">
+    <ul>
+            <li>Let's experiment with some numbers for  \( n\), and see how many times the
+            statement runs. To make the analysis easy, we choose numbers that are multiples of \( 2\) because the loop is being divided by \( 2\).
+            </li>
+            <li>When \( n=16\),&nbsp;&nbsp;the statement runs \(5\) times <span class="minor">(when \(i={16,8,4,2,1}\))</span></li>
+            <li>When \( n=8\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={8,4,2,1}\))</span></li>
+            <li>When \( n=4\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={4,2,1}\))</span></li>
+            <li>When \( n=2\),&nbsp;&nbsp;the statement runs \(2\) time <span class="minor">(when \(i=2,1\))</span></li>
+            <li>So far our analysis is based on numbers that are multiples of \(2\), and according to the pattern we got, \( T(n)=\log n + 1\).
+                However, this does not accommodate numbers that are not multiples of \(2\): 
+            </li>   
+            <li>When \( n=15\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={15,7,3,1}\))</span></li>            
+            <li>When \( n=7\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={7,3,1}\))</span></li>            
+            <li>Taking numbers that are not multiples of \(2\), we can now say that 
+                <span class='highlighted'>\(T(n)=\lfloor \log n \rfloor + 1 \)</span> <span class='minor'>\(\lfloor x \rfloor \) is the floor, which is the largest integer than is smaller than \(x \) </span>
+            </li> 
+            <li>
+                <span class='highlighted'>\(O(n)=\log n \)</span><span class='minor'> (We get rid of constants and the floor)</span>
+            </li>
+    </ul>    
+</div>
+<p class='task_divider'></p>
+<p><span class='task'>Task 5</span> <b>Write \( T(n)  \) and \(O(n)\) for the following function</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for( int i = 1; i < n; i *= 2 )
+  //Simple Statement</code>
+</pre>
+<p><span id="task_5_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_5_solution_detail" class="task_solution_detail">
+    <ul>
+            <li>Let's experiment with some numbers for  \( n\), and see how many times the
+            statement runs. To make the analysis easy, we choose numbers that are multiples of \( 2\) because the loop is being multiplied by \( 2\).
+            </li>
+            <li>When \( n=16\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={1,2,4,8}\))</span></li>
+            <li>When \( n=8\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={1,2,4}\))</span></li>
+            <li>When \( n=4\),&nbsp;&nbsp;the statement runs \(2\) times <span class="minor">(when \(i={1,2}\))</span></li>
+            <li>When \( n=2\),&nbsp;&nbsp;the statement runs \(1\) time <span class="minor">(when \(i=1\))</span></li>
+            <li>So far our analysis is based on numbers that are multiples of \(2\), and according to the pattern we got, \( T(n)=\log n \).
+                However, this does not accommodate numbers that are not multiples of \(2\): 
+            </li>   
+            <li>When \( n=15\),&nbsp;&nbsp;the statement runs \(4\) times <span class="minor">(when \(i={1,2,4,8}\))</span></li>            
+            <li>When \( n=7\),&nbsp;&nbsp;the statement runs \(3\) times <span class="minor">(when \(i={1,2,4}\))</span></li>            
+            <li>Taking numbers that are not multiples of \(2\), we can now say that 
+                <span class='highlighted'>\(T(n)=\lceil \log n \rceil \)</span> <span class='minor'>\(\lceil x \rceil \) is the ceiling, which is the smallest integer than is larger than \(x \) </span>
+            </li> 
+            <li>
+                <span class='highlighted'>\(O(n)=\log n \)</span><span class='minor'> (We get rid of the ceiling)</span>
+            </li>
+    </ul>    
+</div>
+<p class='task_divider'></p>
+<p><span class='task'>Task 6</span> <b>Write \( T(n)  \) and \(O(n)\) for the following function</b></p>
+<pre class="line-numbers">
+<code class="language-cpp"> for( int i = n; i > 1; i /= 2 ) {
+  for( int j = 1; j < n; j *= 2 ) {
+    for( int k = 0; k < n; k += 2 ) {
+      // simple statement
+    }
+  }
+}</code></pre>
+<p><span id="task_6_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_6_solution_detail" class="task_solution_detail">
+    <ul>
+        <li>Take a look at the annotated code below:</li>
+    </ul>
+    <pre class="line-numbers">
+<code class="language-cpp"> for( int i = n; i > 1; i /= 2 ) { /* log n  */
+  for( int j = 1; j < n; j *= 2 ) { /* log n */
+    for( int k = 0; k < n; k += 2 ) { /* n/2 */
+      // simple statement
+    }
+  }
+}</code>
+    </pre>  
+    <ul>
+        <li>All the loops are independent (\(j\) does not refer \(i\), and \(k\) does not refer to \(j\) nor \(i\)). </li>
+        <li>Therefore, to calculate \(T(n)\), we simply multiply the time complexity of each loop together, and multiply that with the number of statements. (see  <a href='#example_2_solution'>example 2's solution</a>.)</li>
+        <li>Therefore,<span class='highlighted'> \( T(n) = \log n \times \log n \times \frac{n}{2} \, = \frac{n}{2} \, {(\log n)}^2 \)</span> </li>
+        <li><span class='highlighted'>\( O(n) = n \, {(\log n)}^2 \)</span></li>
+    </ul>
+</div>
+<p class='task_divider'></p>
+<div id='comparing_function_complexity' class="medium_heading">
+    Comparing Function Complexity
+</div>
+    <ul>
+        <li> Most functions have complexities that can be classified according to this table.</li>
+        <li>It goes without saying that you want your function to have a complexity that is as efficient as possible.</li>
+        <li>Even though today's computers are very fast, there is still an argument for writing efficient code. Even for a pretty fast computer, it will still be very slow to run a function that has an exponential or factorial complexity.
+        </li>
+    </ul>
+<div class="table_container">
+<table>
+    <tr class="table_header">
+        <th>Big-O</th><th>Complexity</th><th>\( f(50) \)</th><th>\( f(100) \)</th>
+    </tr>
+    <tr>
+        <td>\( O(1) \)</td><td>Constant</td><td>\( 1 \)</td><td>\( 1 \)</td>
+    </tr>
+    <tr>
+        <td>\( O(\log n) \)</td><td>Logarithmic</td><td>\( 5.64 \)</td><td>\( 6.64 \)</td>
+    </tr>
+    <tr>
+        <td>\( O(n) \)</td><td>Linear</td><td>\( 50 \)</td><td>\( 100 \)</td>
+    </tr>  
+    <tr>
+        <td>\( O(n\log n) \)</td><td>Log-linear</td><td>\( 282 \)</td><td>\( 664 \)</td>
+    </tr>   
+    <tr>
+        <td>\( O(n^2) \)</td><td>Quadratic</td><td>\( 2500 \)</td><td>\( 10,000 \)</td>
+    </tr> 
+    <tr>
+        <td>\( O(n^3) \)</td><td>Cubic</td><td>\( 12,500 \)</td><td>\( 100,000 \)</td>
+    </tr>   
+    <tr>
+        <td>\( O(2^n) \)</td><td>Exponential</td><td>\( 1.126 \times 10^{15} \)</td><td>\( 1.27 \times 10^{30} \)</td>
+    </tr>
+    <tr>
+        <td>\( O(n!) \)</td><td>Factorial</td><td>\( 3.0 \times 10^{64} \)</td><td>\( 9.3 \times 10^{157} \)</td>
+    </tr>      
+</table>
+</div>
+    <ul>
+        <li> Take a look at the following graph. You can see how different functions perform.</li>
+        <li> Logarithmic functions are pretty stable, but quadratic and cubic increase much faster.</li>
+    </ul>
+<div class="graph" data-script="functions_complexity">
+    <div class="legend">
+        <span class="color" style="background-color:black;"></span> \( \log n \)
+        <span class="color" style="background-color:red;"></span> \( n \)
+        <span class="color" style="background-color:blue;"></span> \( n \log n \)
+        <span class="color" style="background-color:green;"></span> \( n^2 \)
+        <span class="color" style="background-color:brown;"></span> \( n^3 \)     
+    </div>    
+    <div class="inner_graph" id="functions_complexity">
+
+    </div>
+</div>
+<p class='task_divider'></p>
+
+<div id='worst_average_best_case' class="medium_heading">
+    Worst, Average, and Best Case Scenario
+</div>
+<ul>
+    <li>Let's look at the linear search case:</li>
+</ul>
+<pre class="line-numbers">
+<code class="language-cpp">int linear_search(const vector&lt;int&gt; A&amp;, int target){
+    for(int i=0;i &lt; A.size();++i){
+        if(A[i]==target) //if the item is found
+           return i; //return the index
+        }
+        return -1; //we have looked through the entire array, -1 means not found
+    }</code>
+</pre>
+<ul>
+    <li><b>The best case scenario </b> is the case where the algorithm requires the minimum number of 
+        operations. In the case of linear search, we find the item in the first iteration. Hence, the complexity is \( O(1) \).
+    </li>
+    <li><b>The worst case scenario</b> is the case where the algorithm requires the maximum number of operations. 
+        In the case of linear search, we find the item in the last iteration or we don't find the item at all.
+        This requires \( n \) iterations. Hence, the complexity is \( O(n) \).
+    </li>
+    <li><b>The average case analysis</b> is to get an estimate on the average number of operations the algorithm may 
+        require over all possible sets of input values. Let's assume that \( x \) is contained in array \( A \) and has an equal probability \( \frac{1}{n} \) to be in \( A[i] \), \( 1 ≤ i ≤ n \).
+    </li>
+    <li>
+        Hence, the complexity is the summation of every item's probability \( \times \) the number of steps required to reach the item.
+    </li>
+    <li>
+       \( T(n)=  \frac{1}{n} \times (1+2+3+...+n-1+n) = \frac{1}{n} \times   \sum_{i=1}^{n} i
+       =\frac{1}{n} \times \frac{n (n+1)}{2}=\frac{n+1}{2}
+       \) 
+    </li>
+    <li>Hence, the average complexity is \( O(n) \)</li>
+</ul>
+
+<div class="reference_heading">
+    References
+</div>
+<ol class="reference_list">
+    <li id="triangular_numbers_math_is_fun"> <a href='https://www.mathsisfun.com/algebra/triangular-numbers.html' target="_new">"Triangular Number Sequence" <i class="fas fa-external-link-alt"></i></a>. Math Is Fun.</li>
+    <li id="triangular_numbers_wikipedia"> <a href='https://en.wikipedia.org/wiki/Triangular_number' target="_new">"Triangular Numbers" <i class="fas fa-external-link-alt"></i></a>. Wikipedia.</li>
+    <li id="big_o_notation">Mohr, Austin. <a href="http://www.austinmohr.com/Work_files/complexity.pdf" target="_new">"Quantum Computing in Complexity Theory and Theory of Computation"<i class="fas fa-external-link-alt"></i></a> (PDF). p. 2. Retrieved Feb 4, 2018.</li>
+</ol>

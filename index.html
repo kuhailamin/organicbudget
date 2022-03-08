@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <title>Organic Budget</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Budgeting System, Personal Financial System, Budget, Personal Finance, Itemized Budgeting System">        
+        <link rel="stylesheet" type="text/css" href="style/general.css">
+        <link rel="icon" href="favicon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript"  src='script/homepage.js'></script> 
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "index"},
+                success: function (data) {
+                }
+            });
+        </script>      
+    </head>
+    <body>
+        <div id="menu" class="homepage_menu">
+            <div class="close"><img id="menu_close_icon"  src="images/close.png"></div>
+            <div class="menu_item">Settings</div>
+            <div class="menu_item">Help</div>
+            <div class="menu_item">Log In/div>
+                <div class="menu_item">Sign Up</div>
+            </div>
+        </div>
+        <div class="mobile_container">
+            <div class="homepage_main">
+                <img src="images/tablet_picture.jpg">
+            </div>
+            <div class="homepage_logo">
+                <img id="menu_icon" src="images/menu.gif">
+                <b>Organic</b><span style='color:black;'> Budget</span> 
+            </div>
+            <div class="mobile_slogan">Budgeting Made Easy!</div>
+            <div class="learn-more-button">
+                <div id="learn-more" class="homepage_learnmore"><img src="images/down_arrow_homepage.png"></div>
+            </div>
+
+            <div class="homepage_buttons"> 
+                <div onclick='window.location.assign("/login/");' class="secondary_button"> <a href="/login/">Log In</a></div>
+                <div onclick='window.location.assign("/signup/");' class="main_button"><a href="/signup/">Sign Up</a></div>
+            </div>
+            <div class="homepage_features">
+                <div class="features_heading">  With <span><b>Organic</b><span style='color:black;'> <span style='color:black;'> Budget</span></span></span>, you can:</div>
+                <div class="item"><img src="images/checkmark.png"> Add <b>transactions</b> in different ways.</div>
+                <div class="item"> <img src="images/checkmark.png"> Define <b>budgets</b> based on your needs.</div>
+                <div class="item"><img src="images/checkmark.png"> <b>Track</b> your budgets and expenditures.</div>
+                <div class="item"><img src="images/checkmark.png"> Get <b>insights</b> about your savings.</div>
+                <div class="item"><img src="images/checkmark.png"> Do all that and more  <b> totally for free!</b></div>
+            </div>           
+            <div class="mobile_icon_features">
+                <div class="desktop_icon_title">
+                    Take Control of Your Budget
+                </div>
+                <div class="desktop_icon" onclick="window.open('../features#itemized_transactions', '_blank');">
+                    <img src="images/icons/transaction.png">
+                    <span class="icon_title">Transactions</span>
+                    <span>Add withdraw, deposit and transfer transactions effortlessly.</span>
+                </div>
+                <div class="desktop_icon" onclick="window.open('../features#budgets', '_blank');">
+                    <img src="images/icons/wallet.png">
+                    <span class="icon_title">Budgets</span>
+                    <span>Define budgets that meet your needs and allow you to save money.</span>
+                </div>  
+                <div class="desktop_icon" onclick="window.open('../features#accounts', '_blank');">
+                    <img src="images/icons/currency.png">
+                    <span class="icon_title">Different Currencies</span>
+                    <span>Add many accounts with more than thirty different currencies. </span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#spending_insights', '_blank');">
+                    <img src="images/icons/chart.png">
+                    <span class="icon_title">Insights</span>
+                    <span>Analyze your expenditures and savings with many effective and beautiful charts.</span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#accounts', '_blank');">
+                    <img src="images/icons/account.png">
+                    <span class="icon_title">Accounts</span>
+                    <span>Add different types of accounts depending on your needs</span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#categories', '_blank');">
+                    <img src="images/icons/category.png">
+                    <span class="icon_title">Categories</span>
+                    <span>Organize your expenditures and income with your own custom categories.</span>
+                </div> 
+                <!-- Google Ad -->
+                <!--
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                -->
+                <!-- mobile_homepage -->
+                <!--
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:320px;height:100px"
+                     data-ad-client="ca-pub-9651537267508961"
+                     data-ad-slot="3168812731"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                -->
+                <!-- End of Google Ad -->            
+
+                <footer>
+                    <span class="copyrights">Organic Budget &copy; 2017</span>·<a href="/about_us/" target="_blank">About us</a>·<a href="/help_center/" target="_blank">Help Center</a>·<a target="_blank" href="/contact_us/">Contact us</a>
+                    ·<a target="_blank" href="/privacy_policy/">Privacy</a>·<a href="/terms_of_service/" target="_blank" href="">Terms of Service</a>
+                </footer>                 
+            </div>            
+        </div>
+        <div class="desktop_container">
+            <div class="desktop_logo">
+                <span class="desktop_logo"><b>Organic</b> <span style='color:black;'> Budget</span></span><span class="version">v1.0</span>
+                <a target="_blank" href="/features/" class="top_bar">Features</a><a href="/about_us/" target="_blank" class="top_bar">About us </a><a href="/contact_us/" target="_blank" class="top_bar">Contact us </a><a href="/help_center/" target="_blank" class="top_bar">Help Center </a>
+            </div>
+            <div class="block">
+                <div class="desktop_homepage_features">
+                    <div class="desktop_homepage_slogan">
+                        <span>
+                            Budgeting Made Easy!
+                        </span>
+                    </div> 
+                    <div class="desktop_features_heading"> With <span><b>Organic</b> <span style='color:black;'> Budget</span></span>, you can:
+                    </div>
+                    <div class="desktop_check_marks">
+                        <div class="item"><img  src="images/checkmark.png"> Add <b>transactions</b> in different ways.</div>
+                        <div class="item"><img src="images/checkmark.png"> Define <b>budgets</b> based on your needs.</div>
+                        <div class="item"><img src="images/checkmark.png"> <b>Track</b> your budgets and expenditures.</div>
+                        <div class="item"><img src="images/checkmark.png"> Create <b> accounts</b> with different <b>currencies</b></div>
+                        <div class="item"><img src="images/checkmark.png"> Do all that and more  <b style="background-color:yellow;"> totally for free!</b></div>
+                    </div>
+                    <div class="homepage_buttons">
+                        <div onclick='window.location.assign("/login/");' class="secondary_button"><a href="/login/">Log In</a></div>
+                        <div onclick='window.location.assign("/signup/");' class="main_button"><a href="/signup/">Sign Up</a></div>  
+                    </div>    
+                </div> 
+            </div> 
+            <div class="desktop_icon_features">
+                <div class="desktop_icon_title">
+                    Take Control of Your Budget
+                </div>
+                <div class="desktop_icon" onclick="window.open('../features#itemized_transactions', '_blank');">
+                    <img src="images/icons/transaction.png">
+                    <span class="icon_title">Transactions</span>
+                    <span>Add withdraw, deposit and transfer transactions effortlessly.</span>
+                </div>
+                <div class="desktop_icon" onclick="window.open('../features#budgets', '_blank');">
+                    <img src="images/icons/wallet.png">
+                    <span class="icon_title">Budgets</span>
+                    <span>Define budgets that meet your needs and allow you to save money.</span>
+                </div>  
+                <div class="desktop_icon" onclick="window.open('../features#accounts', '_blank');">
+                    <img src="images/icons/currency.png">
+                    <span class="icon_title">Different Currencies</span>
+                    <span>Add many accounts with more than thirty different currencies. </span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#spending_insights', '_blank');">
+                    <img src="images/icons/chart.png">
+                    <span class="icon_title">Visual Analytics</span>
+                    <span>Analyze your expenditures and savings with many effective and beautiful charts.</span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#accounts', '_blank');">
+                    <img src="images/icons/account.png">
+                    <span class="icon_title">Accounts</span>
+                    <span>Add different types of accounts depending on your needs</span>
+                </div> 
+                <div class="desktop_icon" onclick="window.open('../features#categories', '_blank');">
+                    <img src="images/icons/category.png">
+                    <span class="icon_title">Categories</span>
+                    <span>Organize your expenditures and income with your own custom categories.</span>
+                </div>                 
+            </div>
+            <!--
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            -->
+            <!-- Homepage -->
+            <!--
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9651537267508961"
+                 data-ad-slot="9354947135"></ins>
+            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>      
+            -->
+            <footer>
+                <span class="copyrights">Organic Budget &copy; 2017</span>·<a href="/about_us/" target="_blank">About us</a>·<a target="_blank" href="/contact_us/">Contact us</a>
+                <a target="_blank" href="/help_center">Help Center</a>·<a target="_blank" href="/privacy_policy/">Privacy</a>·<a target="_blank"href="/terms_of_service/">Terms of Service</a>
+            </footer>            
+        </div>        
+
+
+    </body>
+</html>

@@ -1,0 +1,110 @@
+div.utilities{
+    background-color:rgb(245,245,245); 
+    border:1px solid rgb(235,235,235); 
+    margin-bottom:15px;
+    height:30px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+div.utilities .logo{
+    display:inline-block;
+}
+
+div.searchbox input{
+    padding-left:5px;
+    border-color:rgb(73,164,0);
+    width:200px;
+}
+
+div.suggestions_wrapper{
+    left:0px;
+    width:200px;
+}
+
+@media screen and (min-width: 300px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:250px;   
+    }
+}
+
+@media screen and (min-width: 400px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:330px;   
+    }
+}
+
+
+@media screen and (min-width: 500px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:400px;   
+    }
+}
+
+@media screen and (min-width: 700px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:500px;   
+    }
+}
+
+@media screen and (min-width: 800px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:600px;   
+    }
+}
+
+@media screen and (min-width: 900px) {
+    div.searchbox input, div.suggestions_wrapper{
+        width:700px;   
+    }
+}
+
+.popular_title{
+    background-color:rgb(81,185,0);
+    color:white;
+    text-transform:uppercase;
+    padding:5px;
+    padding-left:7px;
+    padding-right:7px;
+    word-spacing: 3px;
+    letter-spacing:1.5px;
+}
+
+div.navigationcontainer{
+    margin-top:-10px;
+    width:auto;
+    padding:10px;
+    text-align: left;
+}
+
+div.navigationcontainer .logo{
+    float:none;
+}
+
+span.arrow{
+    margin-left:3px;
+    color:black;
+}
+
+a.link:hover{
+    text-decoration: underline;
+}
+
+a.link{
+    text-decoration: none;
+    color:black;
+}
+
+span.current{
+    color:gray;
+    text-transform:capitalize;
+}
+
+span#all_courses_navigation{
+    padding-right:5px;
+    padding-left:2px;
+}
+
+
+
+

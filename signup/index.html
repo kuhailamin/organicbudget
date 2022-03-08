@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Organic Budget - Sign Up</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/login_app.css?1'>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type='text/javascript' src='../script/signup_app.js?1'></script>   
+        
+        
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "sign_up"},
+                success: function (data) {
+                }
+            });
+        </script>         
+        
+         
+        <script>
+            $(document).ready(function () {
+                LOGIN.get_t();
+            });
+        </script>         
+    </head>
+    <body>
+        <div id="menu" class="homepage_menu">
+            <div class="close"><img id="menu_close_icon"  src="../images/close.png"></div>
+            <div class="menu_item">Settings</div>
+            <div class="menu_item">Help</div>
+            <div class="menu_item">Log In/div>
+                <div class="menu_item">Sign Up</div>
+            </div>
+        </div>
+        <div class="desktop_container">
+            <div onclick='window.location.assign("..");' class="desktop_logo_center">
+                <span class="desktop_logo"><b>Organic</b> <span style='color:black;'> Budget</span></span>
+            </div>
+            <div class="block">  
+                <div class="signup_form">
+                    <form id="signup_form" name="signup_form">
+                    <div class="item">
+                        <div id="email_feedback" class="item_feedback"></div>
+                        <input id="email" type="text" name="email" placeholder="Email">
+                    </div>
+                    <div class="item">
+                        <div id="password_feedback" class="item_feedback"></div>
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="item">
+                        <div id="confirm_password_feedback" class="item_feedback"></div>
+                        <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password">
+                    </div>                     
+                    <div class="very_small_link">By signing up, you agree to our <a href="../terms_of_service/" target="_blank">Terms Of Service</a>
+                        and <a href="../privacy_policy/" target="_blank"> Privacy Policy</a></div>
+                    
+                    <div id="sign_up_button"  class="main_button signup_button"><img id="login_loading" src="../images/small_loading.gif">Sign Up</div>
+                    </form>
+                    <div class="small_line"></div>
+                    <div class="small_line_heading"> Have an account with us?</div>
+                    <div onclick='window.location.assign("../login/");' class="secondary_button login_button"><a href="../login/">Log In</a></div>                    
+                </div>
+
+            </div> 
+
+        </div>        
+
+
+    </body>
+</html>
+

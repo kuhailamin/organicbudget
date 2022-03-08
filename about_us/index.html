@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Organic Budget About Us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget About us, About us">           
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>        
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "about_us"},
+                success: function (data) {
+                }
+            });
+        </script>         
+          
+    </head>
+    <body>
+        <div class="heading">
+            <div class='logo' onclick="window.location.assign('..');">
+                <b>Organic</b> <span style='color:black;'> Budget</span>
+            </div>
+        </div>
+        <div class="bread_crumb"><a href="..">Organic Budget</a> > <span id="section_topic">About Us</span></div>
+        <div class="question_topic_title_container">
+            <img style="width:90px;" id="question_topic_title_image" src="../images/about_us.png">
+            <div  class="question_topic_title" id="question_topic_title">About us</div>
+            <div class="question_topic_description" id="question_topic_description">We are very proud to provide you with our services</div>
+        </div>
+        <p class="paragraph" style="margin-top:30px;">
+            Welcome to Organic Budget, an innovative way to track your transactions and budgets. The Organic Budget app is owned by a small family based in Kansas City, MO. 
+        </p>
+        <p class="paragraph" style="margin-top:30px;">
+            The idea behind the site started back in 2007 when we wanted to manage our finances. We used Excel spreadsheets to do that. It was fine then, but the process of entering the transactions started becoming cumbersome, and there was a lot of copying and pasting. Further, 
+        we missed a lot of features that were not readily available in Excel.
+        </p>
+        <p class="paragraph" style="margin-top:30px;">
+            We wanted to start a simple solution for families and individuals who would like to have control over their finances. Hence, we spent years and years to be able to formulate this idea.
+            We wanted to combine simplicity, creativity, security, affordability, and performance in one solution.
+        </p>
+        <h1 class='big-heading'>What We Care About</h1>
+        <ul class='list'>
+            <li><b>Privacy and Security:</b> We don't require your personal information nor do we require your bank account info to use our services. Read more about our <a target='_blank' href='../privacy_policy/'>Privacy Policy</a></li>
+            <li><b>Usability and Simplicity:</b> We used the state-of-the-art usability principles to design this website in order to make sure it is easy for you.</li>
+            <li><b>International Solution:</b> Our solution supports multiple currencies and different number and date formats that fit different countries and cultures. Further, the solution can show you the overview of your finances in your favorite default currency.</li>
+            <li><b>Customer Support:</b> We read the messages you write to us, and we try our best to improve our solution based on that.</li>
+            <li><b>User Experience:</b> We want your experience using the system to be fun and exciting. That's why we gamified some aspects of the system.</li>
+
+        </ul>
+        <p class="paragraph" style="margin-top:30px;">
+            Enjoy Organic Budget and feel free to <a href="../contact_us/" target="_blank">Contact us</a> to let us what you think.
+        </p>        
+        <br><br><br>
+    </body> 
+</html>

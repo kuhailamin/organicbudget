@@ -1,0 +1,143 @@
+table.tasks{
+    border-collapse: collapse;
+}
+
+th{
+    color:gray;
+    text-align: left;
+    border-bottom: 2px solid lightgray;
+    background-color:rgb(250,250,250);
+    padding:10px;
+}
+
+tr.task{
+    border-bottom: 1px solid lightgray;
+}
+td.name{
+    width:550px;
+}
+
+.checked{
+    text-decoration: line-through;
+    color:gray;
+}
+
+
+
+tr.task td{
+    padding:10px;
+    text-align: left;
+}
+
+tr.task td.date{
+    font-size:12px;
+    color:rgba(0,0,0,0.6);
+    width:150px;
+}
+
+td input{
+    border-width:0px;
+}
+
+tr.new input{
+    border:1px solid lightgray;
+    width:90%;
+}
+
+tr.new{
+    background-color:rgb(245,245,245);
+}
+
+button[name=edit]{
+    display:none;
+}
+
+span.priority{
+    border-radius:5px;
+    padding:5px;
+    color:white;
+    font-weight: bold;
+    margin:8px;
+    font-size:12px;
+}
+
+td.actions{
+    color:gray;
+    cursor:auto;
+}
+
+td.actions:hover{
+    background-color:rgb(245,245,245);
+    color:black;
+    cursor:pointer;
+}
+
+.L{
+    background-color:rgba(255,0,0,0.25);
+}
+
+.M{
+    background-color:rgba(255,0,0,0.50);
+}
+
+.H{
+    background-color:rgba(255,0,0,1);
+}
+
+.checked span.H, .checked span.M, .checked span.L{
+    background-color:rgba(255,0,0,0.1);
+}
+
+input#new_due_date{
+    width:50%;
+}
+
+select#priority{
+    height:24px;
+    border:1px solid lightgray;
+    color:darkgray;
+}
+
+table.tasks button.add_new_task{
+    float:right;
+    margin:10px;
+    background-color:black;
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    padding:5px;
+}
+
+tr.labels{
+    color:gray;
+    font-size:13px;
+    text-transform:uppercase;
+}
+
+tr.labels td{
+  padding:10px;
+  padding-bottom:0px;
+}
+
+tr.filters td{
+    padding:10px;
+    padding-bottom:20px;
+}
+
+tr.filters td input,tr.filters td select{
+    color:gray;
+    border:1px solid lightgray;
+}
+
+div#tasks{
+    margin-left:2px;
+}
+
+span.sort_icon_span{
+    margin-right:5px;
+}
+
+th.sort_heading:hover{
+    cursor:pointer;
+}
+

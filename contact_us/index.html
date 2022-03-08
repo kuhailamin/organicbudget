@@ -1,0 +1,60 @@
+
+<html>
+    <head>
+        <title>Organic Budget Contact us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget Contact us, Contact us">           
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script type='text/javascript' src='../script/help_center_app.js?1'></script>   
+         
+          
+         
+        <script>
+            $(document).ready(function () {
+                HELP_CENTER.contact_us_init();
+            });
+        </script>
+        <script> 
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "contact_us"},
+                success: function (data) {
+                }
+            });
+        </script>             
+              
+    </head>
+    <body>
+        <div class="heading">
+            <div class='logo' onclick="window.location.assign('..');">
+                <b>Organic</b> <span style='color:black;'> Budget</span>
+            </div>
+        </div>
+        <div class="bread_crumb"><a href="..">Organic Budget</a> > <span id="section_topic">Contact us</span></div>
+        <div class="question_topic_title_container">
+            <img id="question_topic_title_image" src="../images/contact_us.png">
+            <div class="question_topic_title" id="question_topic_title">Contact Us</div>
+            <div class="question_topic_description" id="question_topic_description">Tell us what you think, report a bug, make a complaint, or suggest a new feature!</div>
+        </div>
+
+        <div class="help_center_question_container" id="help_center_question_container">
+            <table class="form">
+                <tr><td class="window-component"><div class="window-name">Email *</div><div id="email-feedback" class="item_feedback">invalid email</div><input maxlength="30" id="email" class="component" type="text"></td></tr>
+                <tr><td class="window-component"><div class="window-name">Topic *</div><select id="topic"><option value="report_problem">Report a problem</option><option value="ask_help">Ask for help</option><option value="suggest_feature">Suggest a feature</option><option value="what_you_think">Tell us what you think</option></select></td></tr>                    
+                <tr><td class="window-component"><div class="window-name">Comments *</div><div id="comments-feedback" class="item_feedback">Comments empty</div><textarea maxlength="200" id="comments" class="component" rows="10" cols="35"></textarea></td></tr>
+                <tr><td class='two-cells' style='padding-top:10px;'><button id="contact-us-button" class="regular_button"><img id="contact_us_loading" src="../images/small_loading.gif">Contact us</button></td></tr>
+                <tr><td class='two-cells'><div id="window-feedback" class="window_feedback" style="position:relative;border-radius:5px;"></div></td></tr>
+                </table>
+            
+        </div>
+    </body> 
+</html>

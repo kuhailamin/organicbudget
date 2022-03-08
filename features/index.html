@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Organic Budget Features</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Organic Budget is an online personal budgeting system. It's the only budgeting system that allows you to add itemized transactions, track your budgets in many different and flexible ways">
+        <meta name="keywords" content="Organic Budget Features">           
+        <link rel="icon" href="../favicon.png">
+        <link rel='stylesheet' type='text/css' href='../style/help_center_app.css?1'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $.ajax({
+                method: "POST",
+                url: "../_main/controller.php",
+                dataType: "json",
+                data: {type: "stats", page: "features"},
+                success: function (data) {
+                }
+            });
+        </script>         
+                 
+    </head>
+    <body>
+        <div class="heading" style='position:absolute;'>
+            <div class='logo' onclick="window.location.assign('..');">
+                <b>Organic</b> <span style='color:black;'> Budget</span>
+            </div>
+        </div>
+        <div class="bread_crumb"><a href="..">Organic Budget</a> > <span id="section_topic">Features</span></div>
+        <div class="question_topic_title_container">
+            <img style="width:90px;" id="question_topic_title_image" src="../images/about_us.png">
+            <div  class="question_topic_title" id="question_topic_title">Features</div>
+            <div class="question_topic_description" id="question_topic_description">We strive hard to provide the best features for you!</div>
+        </div>
+        <h1 id='itemized_transactions' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Itemized Transactions</h1>
+        <div class="paragraph" style="margin-top:30px;">
+            <img style="max-width:603px;"  src='../images/features/transactions_list.jpg'>
+            <p><span class="bulletpoint"></span>Organic Budget is the only budgeting system that allows you to break your transactions into items. This allows you to track your spending item wise as well as category wise.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>There are three kinds of transactions you can work with: spending, income, and transfer transactions.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>For a spending transaction, you can add items as well as quantities of items.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>When you add a transaction, you specify which bank account(s) it is related to.
+            </p>            
+            <p>
+                <span class="bulletpoint"></span>You can easily manage (add, edit, and delete) transactions.
+            </p>
+            <button onclick="window.open('../help_center/detail.html?section=1','_blank');" class="regular_button">Learn more about Transactions</button>
+        </div>
+        <h1 id='transaction_overview' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Transaction Overview</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/transaction_overview_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/transaction_overview_small.jpg'>
+            <p>
+                <span class="bulletpoint"></span>With transactions overview, you can see a graphical overview of your transactions at a glance. You can click on a bar to see a summary of the transactions made on that day.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>You can also see a quick summary of your income and spending in a selected month.
+            </p>            
+        </div>
+        <h1 id='spending_insights' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Spending Insights</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/spending_insights_very_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/spending_insights.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                Use spending insights filters to look at different periods of times, accounts, and to see your spending by category, payee, or item name.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+                The chart helps you look at your spending visually. You can compare it with previous month's spending as well as the average spending. Some categories have a warning icon next to them which means you spent more than the previous month and the average. Others have a green leaf next to them which means you spent less than the previous month and the average.
+            </p> 
+            <button onclick="window.open('../help_center/detail.html?section=5&question=2','_blank');" class="regular_button">Learn more about Spending Insights</button>
+            
+        </div>
+        <h1 id='total_spending_insights' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Total Spending Insights</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/total_spending_insights_very_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/total_spending_insights.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                Use total spending insights filters to look at different periods of times, accounts, and categories. The flame icon means you spent the most in that month.            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              The chart helps you look at your spending visually across a period of time.
+            </p> 
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=5&question=3','_blank');">Learn more about Total Spending Insights</button>
+            
+        </div> 
+        <h1 id='budget_tracking_insights' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Budget Tracking Insights</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/budget_tracking_insights_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/budget_tracking_insights.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                Use budget tracking insights filters to look at different periods of times, accounts, and scales.           
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              The chart helps you look track your budget visually in a specific month.
+            </p> 
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=5&question=4','_blank');">Learn more about Budget Tracking Insights</button>
+        </div>  
+        <h1 id='income_vs_spending_insights' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Income vs Spending Insights</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/income_spending_insights_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/income_spending_insights.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                Use income vs spending insights filters to look at different periods of times and accounts, and to sort the results.           
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              The chart helps you compare monthly income and savings.
+            </p> 
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=5&question=4','_blank');">Learn more about Budget Tracking Insights</button>
+        </div> 
+        <h1 id='budgets' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Budgets</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/budget_very_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/budget_small.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                With Organic Budget, you can define your budget in a very flexible way. You can define your targets based on how much you want to spend on different categories. Targets can be defined in different currencies based on the accounts you have.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              The budget targets can be defined on a yearly basis, monthly basis, etc.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+                You cans set a target to rollover, which means if you don't spend all your budget this cycle, the leftover will be transfered to the next cycle. Further, if you overspend this cycle, the overspending will be deducted from the next cycle.
+            </p>             
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=2','_blank');">Learn more about Budgets</button>
+        </div>         
+        <h1 id='categories' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Categories</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/categories_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/categories.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                With Organic Budget, you can create spending and income categories that help you organize and analyze your spending and income
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              Further, a category can be broken into items that can give you a rich understanding of your spending and income.
+            </p>           
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=3','_blank');">Learn more about Categories</button>
+        </div> 
+        <h1 id='accounts' class='big-heading blue-heading' style='margin-top:35px;margin-bottom:-15px;'>Accounts</h1>
+        <div class="paragraph">
+            <img style="max-width:796px;" class="desktop" src='../images/features/bank_accounts_large.jpg'>
+            <img style="max-width:796px;" class="small_screen" src='../images/features/bank_accounts.jpg'>
+            <p>
+                <span class="bulletpoint"></span>
+                With Organic Budget, you can create different kinds of accounts such as bank accounts and cash accounts. Some accounts can be debit or credit accounts.
+            </p>
+            <p>
+                <span class="bulletpoint"></span>
+              Further, an account can be defined in its own currency. Organic Budget supports more than 30 different currencies.
+            </p>           
+            <button class="regular_button" onclick="window.open('../help_center/detail.html?section=4','_blank');">Learn more about Accounts</button>
+        </div>        
+    </body> 
+</html>

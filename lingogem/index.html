@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Lingo Gem: One-on-One Live Arabic Lessons for your Kids</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/main.css?600">  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+        <script type='text/javascript' src='script/Constants.js?5'></script>
+        <script type='text/javascript' src='script/Template.js?2'></script>
+        <script type='text/javascript' src='script/General.js?600'></script>
+        <script type='text/javascript' src='script/Main.js?2'></script> 
+        <!--templates-->
+        <script id="course-template" type="text/html">
+        <table id="course_{{course_id}}" data-course-id="{{course_id}}" class="course">
+            <tr class="title_row">
+                <td colspan="3">{{course_name}}</td>
+            </tr>
+            <tr>
+                <td class="title_cell">Difficulty: </td>
+                <td>{{course_difficulty}}</td>
+                <td class="logo_cell" rowspan="2"><img src="courses/{{course_link}}/images/logo.jpg"></td>
+            </tr>
+            <tr>
+                <td class="title_cell">Lessons: </td>
+                <td id="course_num_lessons_{{course_id}}">20</td>
+            </tr>
+            <tr id="course_available_in_row_{{course_id}}">
+                <td class="title_cell">Available in:</td>
+                <td colspan="2" id="course_available_in_cell_{{course_id}}"></td>
+            </tr>
+        </table> 
+    </script> 
+    <script id="programming-language-template" type="text/html">
+        <span>
+            {{programming_language_name}}
+        </span>
+    </script> 
+    <script id="course-search-suggestion-template" type="text/html">
+        <div id="course_search_suggestion_{{course_id}}" class="search_suggestion" data-course-id="{{course_id}}" data-course-name="{{course_name}}">
+            {{highlighted_course_name}}
+        </div>
+    </script>     
+     <script id="category-template" type="text/html">
+         <div class="popular_title"> 
+             <a href="./all_courses/?category={{category_id}}">Popular {{category_name}} Courses</a> <button id="see_all_{{category_id}}"> See All</button>
+         </div>         
+        <div id="category_{{category_id}}" class="course_boxes">
+        </div>
+    </script>
+     <script id="popular-category-template" type="text/html">
+         <a href="all_courses/?category={{category_id}}">{{category_name}}</a>
+    </script>     
+</head>
+<body>
+    <div class="utilities">
+        <span class="logo">Lingo Gem</span>
+        <img id="menu_icon" class="menu_icon" src="images/menu.png">
+        <div id="links" class="links">
+            <a href="">Contact us</a><a href="">About us</a><a href="">Features</a>
+        </div>
+    </div>
+    <div class="topbarcontainer">
+        <div class="topbar">
+            <div class="searchbox">
+                <span class="logo">Lingo Gem</span>
+                <div class="catalog"><a href="./catalog/">Catalog</a></div>
+                <input id="course_search_box" placeholder="Search for courses" type="text">
+                <button id="course_search_button" class="find material-icons">search</button>
+                <div id="course_suggestions_wrapper" class="suggestions_wrapper">
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="topbarcontainer">
+        <div id="popular_categories" class="topicsbar">
+        </div>
+    </div>
+    <div class="topbarcontainer"> 
+        <div class="bannarcontainer">
+            <div class="background">
+
+                <div class="bannar">
+                    <div class="bannar_logo">Lingo Gem</div>
+                    <div class="bannar_moto">Online Arabic Lessons for Kids</div>
+                    <div class="banner_features"><span>Structured</span><span> &#x2605;</span><span>One on One</span><span> &#x2605;</span><span>Personalized</span></div>
+                    <button class="learn_more_button">Learn more</button>
+                </div>                                
+            </div>
+
+
+        </div>
+    </div>
+    <div id="categories">
+        <i id="loading_icon" class="fa fa-spinner fa-spin" style="font-size:40px;color:rgb(81,185,0);"></i>
+    </div>
+
+    <footer>
+        <span class="copyrights">We Learn &copy; 2017</span>·<a href="/about_us/" target="_blank">About us</a>·<a target="_blank" href="/contact_us/">Contact us</a>
+        <a target="_blank" href="/help_center">Help Center</a>·<a target="_blank" href="/privacy_policy/">Privacy</a>·<a target="_blank" href="/terms_of_service/">Terms of Service</a>
+    </footer>      
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Kalima: One-on-One Live Arabic Lessons for your Kids</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../style/main.css?65"> 
+        <link rel="stylesheet" href="style/signup.css?3">  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+        <script type='text/javascript' src='../script/Constants.js?7'></script>
+        <script type='text/javascript' src='../script/Data.js?2'></script>        
+        <script type='text/javascript' src='../script/Template.js?6'></script>
+        <script type='text/javascript' src='../script/General.js?103'></script>
+        <script type='text/javascript' src='script/Main.js?7'></script>  
+    <script id="country-combobox-template" type="text/html">
+    <option data-country-id='{{id}}' data-has-states='{{has_states}}'>
+        {{name}}
+    </option>
+    </script> 
+    <script id="state-suggestion-template" type="text/html">
+        <div id="state_suggestion_{{id}}" class="search_suggestion" data-state-name="{{name}}">
+             {{highlighted_state_text}}
+        </div>
+    </script>   
+    <script id="city-suggestion-template" type="text/html">
+        <div id="city_suggestion_{{id}}" class="search_suggestion" data-city-name="{{name}}">
+             {{highlighted_city_text}}
+        </div>
+    </script>   
+    <script id='student-male-options-template' type='text/html'>
+                <option value="son">Son</option>
+                <option value="nephew">Nephew</option>
+                <option value="grandson">Grandson</option>
+                <option value="brother">Brother</option>        
+    </script>
+    <script id='student-female-options-template' type='text/html'>
+                <option value="daughter">Daughter</option>
+                <option value="niece">Niece</option>
+                <option value="granddaughter">Granddaughter</option>
+                <option value="sister">Sister</option>        
+    </script>    
+</head>
+<body>
+    <div class="utilities">
+        <a href="../" class="logo">Kalima</a>
+        <img id="menu_icon" class="menu_icon" src="../images/menu.png">
+        <div id="links" class="links">
+            <a href="">Contact us</a><a href="">About us</a><a href="">Features</a>
+        </div>
+    </div>
+    <div class="navigationcontainer">
+        <a class="link" href="../">Kalima</a>
+        <span class="arrow"> > </span>
+        <span  class="arrow current"> Sign Up</span>
+    </div>
+    <div class="window">
+                 <table>
+                    <tr><td><div class="label_title">Guardian Information</div></td></tr>
+                    <tr><td class="window-component"><div class="window-name">First Name*</div><input id="guardian_first_name"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Last Name*</div><input id="guardian_last_name"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Gender*</div><select id="guardian_gender"><option value="m">Male</option><option value="f">Female</option></tr>                    
+                    <tr><td class="window-component"><div class="window-name">E-mail*</div><input id="guardian_email"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Date of Birth*</div><input id="guardian_dbirth"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Street Address*</div><input id="guardian_street_address"></td></tr>                    
+                    <tr><td class="window-component"><div class="window-name">Country*</div><select class='country_combobox' id="guardian_country"></select></td></tr>
+                    <tr><td class="window-component"><div class="window-name">State*</div><input id="guardian_state">
+                          <div id="guardian_state_suggestions_wrapper" class="suggestions_wrapper">
+                    
+                          </div>
+                        </td></tr>                                                                                 
+                    <tr><td class="window-component"><div class="window-name">City*</div><input id="guardian_city">
+                          <div id="guardian_city_suggestions_wrapper" class="suggestions_wrapper">
+                    
+                          </div>                        
+                        </td></tr>                      
+                    <tr><td class="window-component"><div class="window-name">Zip Code*</div><input id="guardian_zipcode"></td></tr>   
+                    <tr><td><div class="label_title">Student Information</div></td></tr>
+                    <tr><td class="window-component"><div class="window-name">First Name*</div><input id="guardian_first_name"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Last Name*</div><input id="guardian_last_name"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Gender*</div><select class='student_gender_combobox' data-student-id='1' id="student_gender_1"><option value="male">Male</option><option value="female">Female</option></tr>
+                    <tr><td class="window-component"><div class="window-name">Relationship to Guardian*</div><select id="student_relation_to_guardian_1"><option value="son">Son</option><option class='relation_to_guardian_male' value="nephew">Nephew</option><option value="grandson">Grandson</option><option value="brother">Brother</option></select></tr>
+                    <tr><td class="window-component"><div class="window-name">Date of Birth*</div><input id="guardian_dbirth"></td></tr>
+                    <tr><td class="window-component"><div class="window-name">Address*</div><input type='checkbox' id="child_1_address_same"> Same as Guardian's Address</td></tr> 
+                    <tr><td class="window-component"><div class="window-name">Street Address*</div><input id="street_addres"></td></tr>                    
+                    <tr><td class="window-component"><div class="window-name">Country*</div><select class='country_combobox' id="country"></select></td></tr>
+                    <tr><td class="window-component"><div class="window-name">State*</div><input id="student_1_state">
+                          <div id="student_state_suggestions_wrapper_" class="suggestions_wrapper">
+                    
+                          </div>  
+                        
+                        </td></tr>                                         
+                    
+                    <tr><td class="window-component"><div class="window-name">City*</div><input id="city">
+                          <div id="student_city_suggestions_wrapper_" class="suggestions_wrapper">
+                    
+                          </div>                         
+                        
+                        </td></tr>     
+                    <tr><td class="window-component"><div class="window-name">Zip Code*</div><input id="zipcode"></td></tr> 
+                    <tr><td class="window-component"><div class="window-name">&nbsp;</div><button id="add-another-student-button" class="tiny_button"><img class='loading_icon' id="button_loading" src="../images/small_loading.gif">Add Another Student</button></td></tr>
+                                        
+                    
+                    <tr><td class='two-cells'><button id="signup-submit-button" class="regular_button"><img class='loading_icon' id="button_loading" src="../images/small_loading.gif">Submit</button></td></tr>
+                    
+                 </table>
+                <div id="window-feedback" class="window_feedback"></div>       
+    </div>
+
+    <footer>
+        <span class="copyrights">Kalima &copy; 2019</span>·<a href="/about_us/" target="_blank">About us</a>·<a target="_blank" href="/contact_us/">Contact us</a>
+        <a target="_blank" href="/help_center">Help Center</a>·<a target="_blank" href="/privacy_policy/">Privacy</a>·<a target="_blank" href="/terms_of_service/">Terms of Service</a>
+    </footer>  
+</body>
+</html>

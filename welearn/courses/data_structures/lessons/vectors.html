@@ -1,0 +1,302 @@
+<div class="big_heading">
+    Vectors
+</div>
+<ul>
+    <img class="big_picture" src="vector_illustration.jpg">
+    <li>
+        Vectors are essentially arrays that can be expanded when needed, and you can add an item anywhere in the vector without overwriting existing items.
+        Further, you can delete items from vectors without leaving a gap (null) behind.
+    </li>
+    <li>
+       Like arrays, you can look up an item in a vector by index. 
+    </li>
+  
+</ul>
+<div class="medium_heading">
+    Vector Functions
+</div>
+<div class="table_container">
+<table>
+    <tr class="table_header">
+        <th style="min-width:330px;">Function</th><th style="min-width:250px;">Description</th>
+    </tr>
+    <tr>
+        <td><code>operator<b>[]</b></code><td>Looks up an item in a vector by index</td>
+    </tr>
+    <tr>
+        <td><code><b>insert</b>(int position, const Data_Type& val)</code><td>Inserts an item at a certain position</td>
+    </tr>   
+    <tr>
+        <td><code><b>erase</b>(int position)</code><td>Erases an item at a given position</td>
+    </tr> 
+    <tr>
+        <td><code><b>push_back</b>(const Data_Type& item)</code><td>Adds an item at the end of the vector</td>
+    </tr> 
+    <tr>
+        <td><code><b>push_front</b>(const Data_Type& item)</code><td>Adds an item at the front of the vector</td>
+    </tr>
+    <tr>
+        <td><code><b>pop_front</b>()</code><td>Deletes an item at the front of the vector</td>
+    </tr>
+    <tr>
+        <td><code><b>pop_back</b>()</code><td>Deletes an item at the end of the vector</td>
+    </tr>    
+</table>
+</div>
+<div class="medium_heading">
+    The Subscript Operator []
+</div>
+<ul>
+    <li>
+        The subscript operator [], also called the square bracket operator, simply allows you to look up an item in the vector by index.
+   </li>
+    <p> <span class='example'> Example </span> The following example shows you how to use the subscript operator.</p>
+<pre class="line-numbers">
+<code class="language-cpp">vector&lt;string&gt; v(20); //declaring a vector with twenty spots
+v[0]="Hello"; //putting item "Hello" at index 0
+v[1]="World!"; //putting item "World!" at index 1
+
+string str=v[0]; //getting the item at index 0 and storing it at the string str
+cout&lt;&lt;str&lt;&lt;endl; //printing our the string str (Hello)
+</code>
+<a href="http://tpcg.io/6hIxdB" class="run_button"></a>
+</pre>
+    <li>
+         <b>Implementing the Subscript Operator:</b> The following code shows you how to implement the subscript operator.
+    <pre class="line-numbers">
+<code class="language-cpp">/** Overloading the subscript operator, which allows you to look up an item 
+in a vector by index
+@param index the index you want to look up
+@return the item at the given index*/
+Data_Type& operator[](int index) {
+
+    if (index<0 || index >= num_items) // Verify that the index is valid.
+        throw std::out_of_range("invalid index");
+
+    return the_array[index]; //otherwise, return the item at the given index
+}
+</code>
+</pre>
+    
+    </li> 
+    
+</ul>
+<div class="medium_heading">
+    The Insert Function
+</div>
+<ul>
+    <li>
+        The <code><b>insert</b></code> function allows you to insert an item at a given position in the vector.
+    The new item will not overwrite the existing item at the given position. Instead, it will make room for
+    the new item by shifting all the items one step to the right starting from the last time until the item located at
+    <code>index +1</code>
+    </li>
+    <li>For instance, the following animation shows what happens when we add item "M" at index 4.
+    </li>
+    </ul>
+   <div data-script-object-name="IFVA" data-function-name="start_animation" id="insert-function-animation" class="animation" data-script="insert_function_vector_animation" data-style="insert_function_vector_animation">
+       <div data-function-name="run_animation" class="run_animation_button"></div>
+   </div>
+<ul>
+        <li>
+            <b>Implementing the <code>Insert</code> Function:</b> The following code shows you how to implement the <code>Insert</code> function.
+            </li>
+</ul>
+<pre class="line-numbers">
+<code class="language-cpp"> /** insert an item at a certain position. The function makes new room for the new item. It doesn't 
+overwrite the item existing at the given position. Items from the end until position +1 will simply be shifted one
+step to the right.
+
+@param position of the new item
+@param val the new item to be added
+*/
+
+void insert(int position, const Data_Type& val) {
+    // Validate index.
+    if (position <0 || position > num_items)
+	throw std::out_of_range("invalid index");
+
+    // Ensure that there is space for the new item.
+	if (num_items == capacity) 
+            allocate(2 * capacity);   // Allocate an expanded array
+
+    // Move data from num_items to position down.
+	for (int i = num_items; i > position; --i) 
+            the_array[i] = the_array[i - 1];
+			
+    // Insert the new item.
+	the_array[position] = val;
+	++num_items;
+}
+</code>
+</pre>
+<ul>
+    <li>The code at Lines 11-12 validates the position.</li>
+    <li>The code at Lines 14-16 ensures there is enough space for the new item. Otherwise, it will allocate more space for the vector.</li>
+    <li>The code at Lines 19-20 make room for the new item by shifting all items from the end of the vector until the position of insertion. </li>
+    <li>The code at Line 23 adds the new item at the position of insertion. </li>
+    <li>The code at Line 24 increments the number of items. </li>
+</ul>
+   <p class='task_divider'></p>
+<p><span id="example_1" class='task'>Task 1</span> <b>Why does the shifting in the Insert function start at the end? Why not from the insertion position?</b></p>
+<p><span id="task_1_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_1_solution_detail" class="task_solution_detail">
+    <ul>
+        <li>Because if we do that, the items from the insertion position and on will be overwritten.</li>
+        <li>Take a look at the following animation:</li>
+    </ul>
+   <div data-script-object-name="WIFVA" data-function-name="start_animation" id="wrong-insert-function-animation" class="animation" data-script="wrong_insert_function_vector_animation" data-style="insert_function_vector_animation">
+       <div data-function-name="run_animation" class="run_animation_button"></div>
+   </div>
+</div>
+<div class="medium_heading">
+    The Erase Function
+</div>
+<ul>
+    <li>
+        The <code><b>erase</b></code> function allows you to remove an item at a given position in the vector.
+        The item to be deleted won't be set to null or leave a gap behind. Instead, we will shift all the items past the item
+        we want to delete one step to the left starting from <code>index +1</code> where <code>index</code> represents
+        the index of the item we want to delete.
+    </li>
+    <li>For instance, the following animation shows what happens when we add item "D" at index 3.
+    </li>
+    </ul>
+   <div data-script-object-name="EFVA" data-function-name="start_animation" id="erase-function-animation" class="animation" data-script="erase_function_vector_animation" data-style="insert_function_vector_animation">
+       <div data-function-name="run_animation" class="run_animation_button"></div>
+   </div>
+<ul>
+        <li>
+            <b>Implementing the <code>erase</code> Function:</b> The following code shows you how to implement the <code>erase</code> function.
+            </li>
+            </ul>
+<pre class="line-numbers">
+<code class="language-cpp"> /**
+    erases an item at a given position. The function won't set the item to 
+    null or leave a gap behind. Items past the item will simply be shifted one step to the left.
+
+    @param position the position of the item we want to delete
+    */
+    void erase(int position) {
+       // Validate index.
+      if (position < 0 || position >= num_items) 
+	throw std::out_of_range("invalid index");
+			
+    // Move items below the removed one up.
+        for (int i = position + 1; i < num_items; i++) {
+	    the_array[i - 1] = the_array[i];
+        }
+    num_items--;
+    }
+</code>
+</pre>
+<ul>
+    <li>The code at Lines 9-10 validates the position.</li>
+    <li>The code at Lines 13-15 shifts all the items one step to the left starting from <code>position + 1</code> through the end of the vector. </li>
+    <li>The code at Line 16 increments the number of items. </li>
+</ul>
+   <p class='task_divider'></p>
+   <p><span id="example_2" class='task'>Task 2</span> <b>Why does the shifting in the <code>Erase</code> function start at <code>index+1</code>? Why not from the last item's position?</b></p>
+<p><span id="task_2_solution" class='task_solution'>Show Solution</span></p>
+<div id="task_2_solution_detail" class="task_solution_detail">
+    <ul>
+        <li>Because if we do that, the items from <code>position + 1</code> and on will be overwritten.</li>
+        <li>Take a look at the following animation:</li>
+    </ul>
+   <div data-script-object-name="WEFVA" data-function-name="start_animation" id="wrong-erase-function-animation" class="animation" data-script="wrong_erase_function_vector_animation" data-style="insert_function_vector_animation">
+       <div data-function-name="run_animation" class="run_animation_button"></div>
+   </div>
+</div>
+<div class="medium_heading">
+    The push_back Function
+</div>
+<ul>
+    <li>
+        The <code><b>push_back</b></code> function allows you to add an item at the end of the vector.
+    </li>
+    <li>For instance, the following animation shows what happens when we add item "D" at index 3.
+    </li>
+    </ul>
+   <div data-script-object-name="PBFVA" data-function-name="start_animation" id="push-back-function-animation" class="animation" data-script="push_back_function_vector_animation" data-style="insert_function_vector_animation">
+       <div data-function-name="run_animation" class="run_animation_button"></div>
+   </div>
+<p class='task_divider'></p>
+<div class="medium_heading">
+    The <code>vector</code> Copy Constructor
+</div>
+<ul>
+    <li>
+        The <code><b>copy constructor</b></code> is a special function that is invoked when the vector is copied.
+    </li>
+    <li>For instance, you can explicitly call the copy constructor this way: <code>vector&lt;int&gt; v2(v1);</code>
+    </li>
+    <li>
+        This code will copy <code>v1</code> using the copy constructor, and will store in <code>v2</code>.
+    </li>
+    <li>
+        Here are all the situations where the copy constructor gets called:
+        <ol>
+            <li>An object is passed to a function by value.</li>
+            <li>An object is returned from a function.</li>
+            <li>An object is initialized with another object of the same class.</li>
+        </ol>
+    </li>
+    <li>
+        Here is the code for the copy constructor. Notice that we are making sure that we are making a deep copy of the other vector. 
+        A deep copy is an independent copy of the original vector, that is, when one of them changes, the other does not.
+    </li>
+    </ul>
+<pre class="line-numbers">
+<code class="language-cpp"> /**copy constructor
+@param another the other vector we are copying over to this vector
+*/
+vector&lt;Data_Type&gt;(const vector&lt;Data_Type&gt;&amp; another) {
+    this->capacity = another->capacity;
+    this->num_items = another->num_items;
+    the_array = new Data_Type[another.capacity];
+
+    for (int i = 0; i < num_items; ++i)
+        the_array[i] = other.the_array[i];
+}
+</code>
+</pre>
+<ul>
+    <li>
+        The following animation illustrates how the copy constructor copies <code>vector v1</code> into <code>vector v2</code>.
+    </li>
+</ul>
+<div data-script-object-name="CCFVA" data-function-name="start_animation" id="copy-constructor-function-animation" class="animation" data-script="copy_constructor_function_vector_animation" data-style="insert_function_vector_animation">
+    <div data-function-name="run_animation" class="run_animation_button"></div>
+    <div class="vector" id="vector_1">
+        <div class="vector_title">vector&lt;int&gt; v1</div>
+        <div class="vector_content">
+            <div class="content_line">num_items= <span id="v1_num_items_val">4</span></div>
+            <div class="content_line">capacity= <span id="v1_capacity_val">5</span></div>
+            <div class="content_line">int* the_data <span style="font-size:20px;"> &rArr;</span></div>
+        </div>
+    </div>
+    <div class="vector" id="vector_2">
+        <div class="vector_title">vector&lt;int&gt; v2</div>
+        <div class="vector_content">
+            <div class="content_line">num_items=<span id="v1_num_items_val"></span></div>
+            <div class="content_line">capacity=<span id="v1_capacity_val"></span></div>
+            <div class="content_line">int* the_data  <span style="font-size:20px;"> &rArr;</span></div>
+        </div>
+    </div>   
+    <table class="vector_table" id="table_v1">
+        <tr class="index_row">
+            <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr class="data_row">
+            <td class="data_cell">A</td><td class="data_cell">B</td><td class="data_cell">C</td><td class="data_cell">D</td><td class="empty_cell"></td>
+        </tr>        
+    </table>
+        <table class="vector_table" id="table_v2">
+        <tr class="index_row">
+            <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr class="data_row">
+            <td id="cc_empty_cell_0" class="empty_cell">A</td><td id="cc_empty_cell_1" class="empty_cell">B</td><td id="cc_empty_cell_2" class="empty_cell">C</td><td id="cc_empty_cell_3" class="empty_cell">D</td><td class="empty_cell"></td>
+        </tr>        
+    </table>
+</div>
